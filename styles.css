@@ -1,4 +1,13 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .calc-container {
-border: black 2px;
+border: 2px solid black;
 };
 
+.row {
+    display: flex;
+    flex-flow: row wrap;
+};
