@@ -10,7 +10,7 @@ body {
     padding: 15px;
     display: flex;
     flex-flow: row wrap;
-    background-color: rgb(43, 62, 79)
+    background-color: rgb(64, 77, 89)
 }
 
 .display {
@@ -34,4 +34,12 @@ button {
     background-color: rgb(125, 130, 135);
     border-radius: 5px;
     padding: 10px;
+}
+
+button.ops {
+    background-color: rgb(178, 116, 2);
+}
+
+button.opsa {
+    background-color:rgb(169, 175, 182)
 }
