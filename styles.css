@@ -29,6 +29,7 @@ body {
 }
 
 button {
+    aspect-ratio: 2/1;
     margin: 2px;
     background-color: rgb(125, 130, 135);
     border-radius: 5px;
