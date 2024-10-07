@@ -76,6 +76,25 @@ buttons.forEach(button => {
                 // conditional logic for operators
                 if (displayText.includes(' + ') === true || displayText.includes(' - ') === true || displayText.includes(' x ') === true || displayText.includes(' / ') === true) {
                     // if there is an operator, begin assigning numbers to num2
+                    // These cases will slice and return the digits after the string for storage in index.num2
+                    switch (button.textContent) {
+                        case ' + ':
+                            let indexPlus = displayText.indexOf(' + ');
+                            
+                            break;
+                        case ' - ':
+                            let indexMinus = displayText.indexOf(' - ');
+                        case ' x ':
+                            let indexMultiply = displayText.indexOf(' x ');
+                            break;
+                        case ' / ':
+                            let indexDivide = displayText.indexOf(' / ');
+                            break;
+                    }
+                    
+                    
+                    
+                    let num2Str = 
                     input.num2 = btnText;
                     //call operate(input.operator, num1, num2);
                     
