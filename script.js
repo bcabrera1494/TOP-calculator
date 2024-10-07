@@ -100,19 +100,19 @@ opButtons.forEach(opButton => {
         const target = event.target;
 
         switch (target.textContent) {
-            case ' + ':
+            case '+':
                 input.operator = '+';
                 console.log(input);
                 break;
-            case ' - ':
+            case '-':
                 input.operator = '-';
                 console.log(input);
                 break;
-            case ' x ':
+            case 'x':
                 input.operator = 'x';
                 console.log(input);
                 break;
-            case ' / ':
+            case '/':
                 input.operator = '/';
                 console.log(input);
                 break;
