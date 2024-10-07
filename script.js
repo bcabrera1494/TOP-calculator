@@ -43,7 +43,7 @@ let buttons = document.querySelectorAll('button');
 const display = document.querySelector('.display');
 
 buttons.forEach(button => {
-    button.addEventListener('click', (event) => {
+    button.addEventListener('mousedown', (event) => {
         const target = event.target;
         // display.textContent = ''; -----> Trying to initialize display content here so that the 0 disappears upon click. Not working.
         // let displayText = display.textContent;
@@ -96,9 +96,9 @@ buttons.forEach(button => {
                             break;
                         case ' / ':
                             let indexDivide = displayText.indexOf(' / ');
-                            break;
-                    };
-
+                break;
+        };
+        
                     //call operate(input.operator, num1, num2);
 
                 };
