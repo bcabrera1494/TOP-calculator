@@ -51,33 +51,40 @@ buttons.forEach(button => {
             case 'opsa':
                 if (button.textContent == ' . ' && display.textContent.includes(' . ') === false) {
                     display.textContent = display.textContent.concat(button.textContent);
-                    input.num1 = display.textContent;
                 } else {
                     console.log('I am just here for decoration');
                 };
                 break;
             case 'ops':
                 input.operator = button.textContent;
-                display.textContent = display.textContent.concat(button.textContent)
-                console.log(input);
+                display.textContent = display.textContent.concat(button.textContent);
+                let displayText = display.textContent
                 break;
             case 'clear':
                 display.textContent = '0';
                 input.num1 = '';
                 input.num2 = '';
                 input.operator = '';
-                console.log(input);
                 break;
             case 'num':
                 let btnText = button.textContent;
                 display.textContent = display.textContent.concat(btnText);
-                let displayText = display.textContent;
-                input.num1 = displayText;
                 break;
         };
 
     });
+
+    button.addEventListener('mouseup', (event) => { // MOUSEUP triggers code to update the input object values for numbers (and decimals)
+    let target = event.target;
+
+    switch (target.className) {
+        case 'num':
+            
+    }
+    });
 });
+
+
 
 let opButtons = document.querySelectorAll('.ops');
 
