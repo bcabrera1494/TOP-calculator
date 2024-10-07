@@ -40,24 +40,29 @@ const input = {
 };
 
 let buttons = document.querySelectorAll('button');
+const display = document.querySelector('.display');
 
 buttons.forEach(button => {
     button.addEventListener('click', () => {
 
-        if (button.className == 'opsa') {
+        if (button.className == 'opsa' && button.id !== 'clear') {
             console.log('I am just here for decoration');
+        } 
+        if (button.id == 'clear') {
+            display.textContent = '  ';
         } else {
-
-            const display = document.querySelector('.display');
             const btnText = button.textContent;
             display.textContent = btnText;
             let displayText = display.textContent;
+            // add logic to append digits if 2nd button press is not an operator
+
             // store the first number input into the calculator into the input.num1
                 // need to account for multiple digits
             // store the operator input into the calculator into the input.operator
             // store the 2nd number input into the calculator input.num2
                 // need to account for multiple digits
-            input.push(btnText);
+            input.num1 = Number(displayText);
+            console.log(input.num1);
             console.log(input);
         };
 
