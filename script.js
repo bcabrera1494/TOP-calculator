@@ -32,16 +32,17 @@ function operate(operator, a, b) {
         return divide(a, b);
     };
 };
-
+// declare empty array
+const input = [];
 let buttons = document.querySelectorAll('button');
 
 buttons.forEach(button => {
     button.addEventListener('click', () => {
-        // declare empty array
-        const input = [];
+        
         if (button.className == 'opsa') {
             console.log('I am just here for decoration');
         } else {
+
             const display = document.querySelector('.display');
             const btnText = button.textContent;
             display.textContent = btnText;
