@@ -45,7 +45,8 @@ const display = document.querySelector('.display');
 buttons.forEach(button => {
     button.addEventListener('click', (event) => {
         const target = event.target;
-
+        // display.textContent = ''; -----> Trying to initialize display content here so that the 0 disappears upon click. Not working.
+        // let displayText = display.textContent;
         switch (target.className) {
             case 'opsa':
                 if (button.textContent == ' . ' ){
@@ -74,13 +75,23 @@ buttons.forEach(button => {
                 display.textContent = displayText.concat(btnText);
                 // conditional logic for operators
                 // if there is an operator, assign numbers to num2
-                // if operator is + call sum()
-                // if operator is - call subtract()
-                // if operator is x call multiply()
-                // if operator is / call divide()
-                if (input.operator !== '') {
-                    input.num2 = display.textContent.concat(button.textContent);
+                if (btnText === ' + ' || btnText === ' - ' || btnText === ' x ' || btnText === ' / ') {
+                    input.num2 = 'hey';
+                    switch (button.textContent) {
+                        case ' + ':
+                        // if operator is + call sum()
+                        case ' - ':
+                        // if operator is - call subtract()
+                        case ' x ':
+                        // if operator is x call multiply()
+                        case ' / ':
+                        // if operator is / call divide()
+    
+                    };
+                    
                 };
+
+
 
                 console.log(displayText.concat(btnText));
                 console.log(input);
