@@ -44,8 +44,6 @@ const display = document.querySelector('.display');
 
 buttons.forEach(button => {
     button.addEventListener('click', (event) => {
-        // Write switch case logic to replace if...else... logic. Improve readability of code. 
-        // Declare case value to be the button.className
         const target = event.target;
 
         switch (target.className) {
@@ -58,7 +56,7 @@ buttons.forEach(button => {
                 console.log(input);
                 break;
             case 'clear':
-                display.textContent = '';
+                display.textContent = '0';
                 input.num1 = '';
                 input.num2 = '';
                 input.operator = '';
@@ -67,9 +65,19 @@ buttons.forEach(button => {
             case 'num':
                 input.num1 = display.textContent.concat(button.textContent);
                 let displayText = display.textContent;
-                display.textContent = '';
+                displayText.slice(1);
                 let btnText = button.textContent;
                 display.textContent = displayText.concat(btnText);
+                // conditional logic for operators
+                // if there is an operator, assign numbers to num2
+                // if operator is + call sum()
+                // if operator is - call subtract()
+                // if operator is x call multiply()
+                // if operator is / call divide()
+                // if there is an operator, assign numbers to num2
+                if (input.operator !== '') {
+                    input.num2 = display.textContent.concat(button.textContent);
+                };
 
                 console.log(displayText.concat(btnText));
                 console.log(input);
