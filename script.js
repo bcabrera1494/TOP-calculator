@@ -32,3 +32,15 @@ function operate(operator, a, b) {
         return divide(a, b);
     };
 };
+
+function btnClick(button) {
+    // click button
+    let btn = document.querySelector('button');
+    let btnContent = btn.textContent;
+    btn.addEventListener(click => {
+        let disp = document.querySelector('.display');
+        disp.textContent = btnContent.toString();
+    });
+    // store button in variable
+    // show number on display
+};
