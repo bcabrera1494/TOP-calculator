@@ -44,21 +44,24 @@ const display = document.querySelector('.display');
 
 buttons.forEach(button => {
     button.addEventListener('click', () => {
+        // Write switch case logic to replace if...else... logic. Improve readability of code. 
+        
 
-        if (button.className == 'opsa' && button.id !== 'clear') {
-            console.log('I am just here for decoration');
-        } 
-        if (button.className == 'ops') {
-            input.operator = button.textContent;
-            console.log(input.operator);
-        }
-        if (button.className == 'clear') {
-            display.textContent = '  ';
-            input.num1 = '';
-            input.num2 = '';
-            input.operator = '';
-            console.log(input);
-        } 
+        // BELOW IS LOGIC THAT WORKS FOR PRESSING OPS, OPSA AND CLEAR BUTTONS
+        // if (button.className == 'opsa' && button.id !== 'clear') {
+        //     console.log('I am just here for decoration');
+        // } 
+        // if (button.className == 'ops') {
+        //     input.operator = button.textContent;
+        //     console.log(input.operator);
+        // }
+        // if (button.className == 'clear') {
+        //     display.textContent = '  ';
+        //     input.num1 = '';
+        //     input.num2 = '';
+        //     input.operator = '';
+        //     console.log(input);
+        // } 
         // BELOW IS EXPERIEMENTAL LOGIC TO APPEND BUTTON TEXT CONTENT TO CREATE MULTI-DIGIT OPERANDS
         // if (button.className == 'num') {
         //     const btnText = button.textContent;
