@@ -37,6 +37,8 @@ let buttons = document.querySelectorAll('button');
 
 buttons.forEach(button => {
     button.addEventListener('click', () => {
-        console.log('kopi');
+        const display = document.querySelector('.display');
+        const btnText = button.textContent;
+        display.textContent = btnText;
     });
 });
