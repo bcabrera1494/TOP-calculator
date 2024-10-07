@@ -26,8 +26,10 @@ button {
     margin: 2px;
     background-color: rgb(125, 130, 135);
     border-radius: 80%;
+    border: none;
     padding: 10px;
     color: white;
+    font-size: large;
 }
 
 button.ops {
