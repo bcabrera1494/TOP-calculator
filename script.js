@@ -34,12 +34,14 @@ function operate(operator, a, b) {
 };
 
 function btnClick(button) {
-    // click button
-    let btn = document.querySelector('button');
+    // click button event listener
+    let button = document.querySelector('button');
     let btnContent = btn.textContent;
-    btn.addEventListener(click => {
+    button.addEventListener('click', (e) => {
+        // store display in variable
         let disp = document.querySelector('.display');
-        disp.textContent = btnContent.toString();
+        // change display text content to button text content
+        // store display value in a variable
     });
     // store button in variable
     // show number on display
