@@ -48,7 +48,12 @@ buttons.forEach(button => {
 
         switch (target.className) {
             case 'opsa':
-                console.log('I am just here for decoration');
+                if (button.textContent == ' . ' ){
+                display.textContent = display.textContent.concat(button.textContent);
+                input.num1 = display.textContent;
+                } else {
+                    console.log('I am just here for decoration');
+                };
                 break;
             case 'ops':
                 input.operator = button.textContent;
@@ -65,7 +70,6 @@ buttons.forEach(button => {
             case 'num':
                 input.num1 = display.textContent.concat(button.textContent);
                 let displayText = display.textContent;
-                displayText.slice(1);
                 let btnText = button.textContent;
                 display.textContent = displayText.concat(btnText);
                 // conditional logic for operators
@@ -74,7 +78,6 @@ buttons.forEach(button => {
                 // if operator is - call subtract()
                 // if operator is x call multiply()
                 // if operator is / call divide()
-                // if there is an operator, assign numbers to num2
                 if (input.operator !== '') {
                     input.num2 = display.textContent.concat(button.textContent);
                 };
