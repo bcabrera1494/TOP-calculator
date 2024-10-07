@@ -49,9 +49,9 @@ buttons.forEach(button => {
         // let displayText = display.textContent;
         switch (target.className) {
             case 'opsa':
-                if (button.textContent == ' . ' && display.textContent.includes(' . ') === false){
-                display.textContent = display.textContent.concat(button.textContent);
-                input.num1 = display.textContent;
+                if (button.textContent == ' . ' && display.textContent.includes(' . ') === false) {
+                    display.textContent = display.textContent.concat(button.textContent);
+                    input.num1 = display.textContent;
                 } else {
                     console.log('I am just here for decoration');
                 };
@@ -83,7 +83,11 @@ buttons.forEach(button => {
                     switch (button.textContent) {
                         case ' + ':
                             let indexPlus = displayText.indexOf(' + ');
+                            let num1Str = displayText.substring(1, indexPlus);
+                            let num2Str = displayText.substring(indexPlus);
                             
+                            input.num1 = num1Str;
+                            input.num2 = num2Str;
                             break;
                         case ' - ':
                             let indexMinus = displayText.indexOf(' - ');
@@ -93,21 +97,15 @@ buttons.forEach(button => {
                         case ' / ':
                             let indexDivide = displayText.indexOf(' / ');
                             break;
-                    }
-                    
-                    
-                    
-                    let num2Str = 
-                    input.num2 = btnText;
+                    };
+
                     //call operate(input.operator, num1, num2);
-                    
+
                 };
 
-                console.log(displayText.concat(btnText));
                 console.log(input);
                 break;
         };
-
 
         // BELOW IS THE PSEUDOCODE FOR STEPS TO STORE THE OPERANDS AND OPERATOR INTO VARIABLES
         // store the num1, operator, and num2 into variables
