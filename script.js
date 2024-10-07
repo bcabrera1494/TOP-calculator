@@ -37,9 +37,14 @@ let buttons = document.querySelectorAll('button');
 
 buttons.forEach(button => {
     button.addEventListener('click', () => {
-        const display = document.querySelector('.display');
-        const btnText = button.textContent;
-        display.textContent = btnText;
-        let displayText = display.textContent;
+        if (button.className == 'ops' || button.className == 'opsa') {
+            console.log('hey');
+            } else {
+                const display = document.querySelector('.display');
+                const btnText = button.textContent;
+                display.textContent = btnText;
+                let displayText = display.textContent;
+            }
+
     });
 });
