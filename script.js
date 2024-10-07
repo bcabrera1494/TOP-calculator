@@ -55,37 +55,26 @@ buttons.forEach(button => {
             case 'ops':
                 input.operator = button.textContent;
                 console.log(input);
+                break;
             case 'clear':
                 display.textContent = '';
                 input.num1 = '';
                 input.num2 = '';
                 input.operator = '';
                 console.log(input);
+                break;
             case 'num':
-                let displayText = display.textContent;
-                displayText = '' + button.textContent;
-                input.num1 = displayText;
-                console.log(input);
-                
-        }
+               let displayText = display.textContent; 
+               display.textContent = '';
+               let btnText = button.textContent;
+               display.textContent = displayText.concat(btnText);
+               input.num1 = displayText;
 
-        // BELOW IS EXPERIEMENTAL LOGIC TO APPEND BUTTON TEXT CONTENT TO CREATE MULTI-DIGIT OPERANDS
-        // if (button.className == 'num') {
-        //     const btnText = button.textContent;
-        //     let displayText = display.textContent = '';
-        //     input.num1 = displayText.concat(btnText);
-        //     display.textContent = input.num1;
-        //     console.log(`displayText ${displayText}`);
-        //     console.log(`btnText = ${btnText}`);
-        //     console.log(input);
-        //     // if(input.num1 !== '') {
-        //     //     let multiDigit = displayText.concat(btnText);
-        //     //     input.num1 = multiDigit;
-        //     //     console.log(input);
-        //     // };
-        // }; 
+               console.log(displayText.concat(btnText));
+               console.log(input);
+                break;
+        };
         
-
 
         // BELOW IS THE PSEUDOCODE FOR STEPS TO STORE THE OPERANDS AND OPERATOR INTO VARIABLES
         // store the num1, operator, and num2 into variables
