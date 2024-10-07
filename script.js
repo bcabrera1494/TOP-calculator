@@ -54,7 +54,12 @@ buttons.forEach(button => {
         }
         if (button.id == 'clear') {
             display.textContent = '  ';
-        } else {
+            input.num1 = '';
+            input.num2 = '';
+            input.operator = '';
+            console.log(input);
+        } 
+        if (button.className == 'num') {
             const btnText = button.textContent;
             display.textContent = btnText;
             let displayText = display.textContent;
