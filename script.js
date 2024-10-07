@@ -37,8 +37,8 @@ let buttons = document.querySelectorAll('button');
 
 buttons.forEach(button => {
     button.addEventListener('click', () => {
-        if (button.className == 'ops' || button.className == 'opsa') {
-            console.log('hey');
+        if (button.className == 'opsa') {
+            console.log('I am just here for decoration');
             } else {
                 const display = document.querySelector('.display');
                 const btnText = button.textContent;
@@ -49,7 +49,13 @@ buttons.forEach(button => {
     });
 });
 
-// store the first number input into the calculator
-// store the operator input into the calculator
-// store the 2nd number input into the calculator
+// declare empty array
+// store the first number input into the calculator into the array[0]
+// store the operator input into the calculator into the array [1]
+// store the 2nd number input into the calculator[2]
+// iterate through the array to:
+    // declare an empty variable
+    // call the 3 elements into the variable in order 
+    // have the variable perform the correct operation
+    // return the solution
 // update the display to the solution
