@@ -49,7 +49,7 @@ buttons.forEach(button => {
         // let displayText = display.textContent;
         switch (target.className) {
             case 'opsa':
-                if (button.textContent == ' . ' ){
+                if (button.textContent == ' . ' && display.textContent.includes(' . ') === false){
                 display.textContent = display.textContent.concat(button.textContent);
                 input.num1 = display.textContent;
                 } else {
@@ -69,29 +69,17 @@ buttons.forEach(button => {
                 console.log(input);
                 break;
             case 'num':
-                input.num1 = display.textContent.concat(button.textContent);
-                let displayText = display.textContent;
                 let btnText = button.textContent;
-                display.textContent = displayText.concat(btnText);
+                display.textContent = display.textContent.concat(btnText);
+                let displayText = display.textContent;
+                input.num1 = displayText;
                 // conditional logic for operators
-                // if there is an operator, assign numbers to num2
                 if (btnText === ' + ' || btnText === ' - ' || btnText === ' x ' || btnText === ' / ') {
-                    input.num2 = 'hey';
-                    switch (button.textContent) {
-                        case ' + ':
-                        // if operator is + call sum()
-                        case ' - ':
-                        // if operator is - call subtract()
-                        case ' x ':
-                        // if operator is x call multiply()
-                        case ' / ':
-                        // if operator is / call divide()
-    
-                    };
+                    // if there is an operator, assign numbers to num2
+                    input.num2 = 'hey kope';
+                    //call operate(input.operator, num1, num2);
                     
                 };
-
-
 
                 console.log(displayText.concat(btnText));
                 console.log(input);
