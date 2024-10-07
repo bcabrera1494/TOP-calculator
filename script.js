@@ -40,5 +40,6 @@ buttons.forEach(button => {
         const display = document.querySelector('.display');
         const btnText = button.textContent;
         display.textContent = btnText;
+        let displayText = display.textContent;
     });
 });
