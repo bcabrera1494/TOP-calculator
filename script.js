@@ -38,6 +38,7 @@ const input = {
     operator: '',
     num2: '',
 };
+
 let buttons = document.querySelectorAll('button');
 
 buttons.forEach(button => {
@@ -51,26 +52,23 @@ buttons.forEach(button => {
             const btnText = button.textContent;
             display.textContent = btnText;
             let displayText = display.textContent;
-            // store the first number input into the calculator into the object[0]
-            // store the operator input into the calculator into the array [1]
-            // store the 2nd number input into the calculator[2]
+            // store the first number input into the calculator into the input.num1
+                // need to account for multiple digits
+            // store the operator input into the calculator into the input.operator
+            // store the 2nd number input into the calculator input.num2
+                // need to account for multiple digits
             input.push(btnText);
             console.log(input);
         };
 
-        // iterate through the array to get the elements into a variable
-        // declare an empty variable
-                let num1 = '';
-                let operator = '';
-                let num2 = '';
-
-        // transfer the array elements to the variable
-        input.map(item => {})
-
-            // transform the array elements into numbers instead of strings
-            // have the variable perform the correct operation
-            // return the solution
-            // update the display to the solution
+        // store the num1, operator, and num2 into variables
+        // a = input.num1
+        // b = input.num2
+        // o = input.operator
+        
+        // access the variables to perform the correct operation
+        // return the solution
+        // update the display to the solution
 
     });
 });
