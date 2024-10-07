@@ -48,3 +48,8 @@ buttons.forEach(button => {
 
     });
 });
+
+// store the first number input into the calculator
+// store the operator input into the calculator
+// store the 2nd number input into the calculator
+// update the display to the solution
