@@ -120,4 +120,32 @@ buttons.forEach(button => {
     });
 });
 
+let opButtons = document.querySelectorAll('.ops');
+
+opButtons.forEach(opButton => {
+    opButton.addEventListener('mousedown', (event) => {
+        const target = event.target;
+
+        switch (target.textContent) {
+            case ' + ':
+                input.operator = '+'
+                console.log(input);
+                break;
+            case ' - ':
+                input.operator = '-'
+                console.log(input);
+                break;
+            case ' x ':
+                input.operator = 'x'
+                console.log(input);
+                break;
+            case ' / ':
+                input.operator ='/'
+                console.log(input);
+                break;
+        }
+
+
+    })
+})
 
