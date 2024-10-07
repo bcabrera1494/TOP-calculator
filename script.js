@@ -75,13 +75,16 @@ buttons.forEach(button => {
 
     button.addEventListener('mouseup', (event) => { // MOUSEUP triggers code to update the input object values for numbers (and decimals)
     let target = event.target;
+    let displayText = display.textContent;
+
     switch (target.className) {
         case 'num':
-            let displayText = display.textContent;
-            console.log(displayText);
             input.num1 = displayText;
             console.log(input);
         case 'ops':
+            let btnText = target.textContent;
+            let opsIndex = displayText.indexOf(btnText);
+            input.num1 = displayText.substring(1, opsIndex);
             break;
     };
 
