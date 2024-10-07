@@ -32,13 +32,17 @@ function operate(operator, a, b) {
         return divide(a, b);
     };
 };
-// declare empty array
-const input = [];
+// declare empty object
+const input = {
+    num1: '',
+    operator: '',
+    num2: '',
+};
 let buttons = document.querySelectorAll('button');
 
 buttons.forEach(button => {
     button.addEventListener('click', () => {
-        
+
         if (button.className == 'opsa') {
             console.log('I am just here for decoration');
         } else {
@@ -47,19 +51,27 @@ buttons.forEach(button => {
             const btnText = button.textContent;
             display.textContent = btnText;
             let displayText = display.textContent;
-            // store the first number input into the calculator into the array[0]
+            // store the first number input into the calculator into the object[0]
             // store the operator input into the calculator into the array [1]
             // store the 2nd number input into the calculator[2]
             input.push(btnText);
             console.log(input);
         };
 
-        // iterate through the array to:
+        // iterate through the array to get the elements into a variable
         // declare an empty variable
-        // call the 3 elements into the variable in order
-        // have the variable perform the correct operation
-        // return the solution
-        // update the display to the solution
+                let num1 = '';
+                let operator = '';
+                let num2 = '';
+
+        // transfer the array elements to the variable
+        input.map(item => {})
+
+            // transform the array elements into numbers instead of strings
+            // have the variable perform the correct operation
+            // return the solution
+            // update the display to the solution
+
     });
 });
 
