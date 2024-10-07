@@ -74,9 +74,9 @@ buttons.forEach(button => {
                 let displayText = display.textContent;
                 input.num1 = displayText;
                 // conditional logic for operators
-                if (btnText === ' + ' || btnText === ' - ' || btnText === ' x ' || btnText === ' / ') {
-                    // if there is an operator, assign numbers to num2
-                    input.num2 = 'hey kope';
+                if (displayText.includes(' + ') === true || displayText.includes(' - ') === true || displayText.includes(' x ') === true || displayText.includes(' / ') === true) {
+                    // if there is an operator, begin assigning numbers to num2
+                    input.num2 = btnText;
                     //call operate(input.operator, num1, num2);
                     
                 };
