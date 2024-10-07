@@ -48,6 +48,10 @@ buttons.forEach(button => {
         if (button.className == 'opsa' && button.id !== 'clear') {
             console.log('I am just here for decoration');
         } 
+        if (button.className == 'ops') {
+            input.operator = button.textContent;
+            console.log(input.operator);
+        }
         if (button.id == 'clear') {
             display.textContent = '  ';
         } else {
