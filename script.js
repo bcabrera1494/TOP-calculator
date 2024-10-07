@@ -52,7 +52,7 @@ buttons.forEach(button => {
             input.operator = button.textContent;
             console.log(input.operator);
         }
-        if (button.id == 'clear') {
+        if (button.className == 'clear') {
             display.textContent = '  ';
             input.num1 = '';
             input.num2 = '';
