@@ -49,7 +49,9 @@ buttons.forEach(button => {
             // store the first number input into the calculator into the array[0]
             // store the operator input into the calculator into the array [1]
             // store the 2nd number input into the calculator[2]
-        }
+            input.push(btnText);
+            console.log(input);
+        };
 
         // iterate through the array to:
         // declare an empty variable
