@@ -54,6 +54,7 @@ buttons.forEach(button => {
                 break;
             case 'ops':
                 input.operator = button.textContent;
+                display.textContent = display.textContent.concat(button.textContent)
                 console.log(input);
                 break;
             case 'clear':
@@ -64,24 +65,24 @@ buttons.forEach(button => {
                 console.log(input);
                 break;
             case 'num':
-               let displayText = display.textContent; 
-               display.textContent = '';
-               let btnText = button.textContent;
-               display.textContent = displayText.concat(btnText);
-               input.num1 = displayText;
+                input.num1 = display.textContent.concat(button.textContent);
+                let displayText = display.textContent;
+                display.textContent = '';
+                let btnText = button.textContent;
+                display.textContent = displayText.concat(btnText);
 
-               console.log(displayText.concat(btnText));
-               console.log(input);
+                console.log(displayText.concat(btnText));
+                console.log(input);
                 break;
         };
-        
+
 
         // BELOW IS THE PSEUDOCODE FOR STEPS TO STORE THE OPERANDS AND OPERATOR INTO VARIABLES
         // store the num1, operator, and num2 into variables
         // a = input.num1
         // b = input.num2
         // o = input.operator
-        
+
         // access the variables to perform the correct operation
         // return the solution
         // update the display to the solution
