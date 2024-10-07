@@ -59,22 +59,44 @@ buttons.forEach(button => {
             input.operator = '';
             console.log(input);
         } 
-        if (button.className == 'num') {
+        // BELOW IS EXPERIEMENTAL LOGIC TO APPEND BUTTON TEXT CONTENT TO CREATE MULTI-DIGIT OPERANDS
+        // if (button.className == 'num') {
+        //     const btnText = button.textContent;
+        //     let displayText = display.textContent = '';
+        //     input.num1 = displayText.concat(btnText);
+        //     display.textContent = input.num1;
+        //     console.log(`displayText ${displayText}`);
+        //     console.log(`btnText = ${btnText}`);
+        //     console.log(input);
+        //     // if(input.num1 !== '') {
+        //     //     let multiDigit = displayText.concat(btnText);
+        //     //     input.num1 = multiDigit;
+        //     //     console.log(input);
+        //     // };
+        // }; 
+        
+        
+        // BELOW IS THE LOGIC THAT WORKS TO STORE SINGLE DIGITS IN THE OBJECT INPUT AND DISPLAY THE DIGIT ON THE CALC DISPLAY
+        else {
             const btnText = button.textContent;
             display.textContent = btnText;
-            let displayText = display.textContent;
-            // add logic to append digits if 2nd button press is not an operator
+            const displayText = display.textContent;
+            // add logic to append digits if 2nd button press is not an operator (need it for first and second number inputs)
 
+            // if the button pressed is an operator, assign it to input.operator
             // store the first number input into the calculator into the input.num1
                 // need to account for multiple digits
             // store the operator input into the calculator into the input.operator
             // store the 2nd number input into the calculator input.num2
                 // need to account for multiple digits
-            input.num1 = Number(displayText);
+                        // if the button pressed is a number add it to the string of num 1
+            input.num1 = displayText;
             console.log(input.num1);
             console.log(input);
         };
 
+
+        // BELOW IS THE PSEUDOCODE FOR STEPS TO STORE THE OPERANDS AND OPERATOR INTO VARIABLES
         // store the num1, operator, and num2 into variables
         // a = input.num1
         // b = input.num2
