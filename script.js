@@ -43,7 +43,7 @@ let buttons = document.querySelectorAll('button');
 const display = document.querySelector('.display');
 
 buttons.forEach(button => {
-    button.addEventListener('mousedown', (event) => {
+    button.addEventListener('mousedown', (event) => { // MOUSEDOWN triggers code to update the calculator displayText
         const target = event.target;
         // display.textContent = ''; -----> Trying to initialize display content here so that the 0 disappears upon click. Not working.
         // let displayText = display.textContent;
@@ -73,49 +73,8 @@ buttons.forEach(button => {
                 display.textContent = display.textContent.concat(btnText);
                 let displayText = display.textContent;
                 input.num1 = displayText;
-                // conditional logic for operators
-                if (displayText.includes(' + ') === true
-                    || displayText.includes(' - ') === true
-                    || displayText.includes(' x ') === true
-                    || displayText.includes(' / ') === true) {
-                    // if there is an operator, begin assigning numbers to num2
-                    // These cases will slice and return the digits after the string for storage in index.num2
-                    switch (button.textContent) {
-                        case ' + ':
-                            let indexPlus = displayText.indexOf(' + ');
-                            let num1Str = displayText.substring(1, indexPlus);
-                            let num2Str = displayText.substring(indexPlus);
-                            
-                            input.num1 = num1Str;
-                            input.num2 = num2Str;
-                            break;
-                        case ' - ':
-                            let indexMinus = displayText.indexOf(' - ');
-                        case ' x ':
-                            let indexMultiply = displayText.indexOf(' x ');
-                            break;
-                        case ' / ':
-                            let indexDivide = displayText.indexOf(' / ');
                 break;
         };
-        
-                    //call operate(input.operator, num1, num2);
-
-                };
-
-                console.log(input);
-                break;
-        };
-
-        // BELOW IS THE PSEUDOCODE FOR STEPS TO STORE THE OPERANDS AND OPERATOR INTO VARIABLES
-        // store the num1, operator, and num2 into variables
-        // a = input.num1
-        // b = input.num2
-        // o = input.operator
-
-        // access the variables to perform the correct operation
-        // return the solution
-        // update the display to the solution
 
     });
 });
@@ -128,24 +87,28 @@ opButtons.forEach(opButton => {
 
         switch (target.textContent) {
             case ' + ':
-                input.operator = '+'
+                input.operator = '+';
                 console.log(input);
                 break;
             case ' - ':
-                input.operator = '-'
+                input.operator = '-';
                 console.log(input);
                 break;
             case ' x ':
-                input.operator = 'x'
+                input.operator = 'x';
                 console.log(input);
                 break;
             case ' / ':
-                input.operator ='/'
+                input.operator = '/';
                 console.log(input);
                 break;
-        }
+        };
 
 
-    })
-})
+    });
+});
 
+
+// access the variables to perform the correct operation
+// return the solution
+// update the display to the solution
