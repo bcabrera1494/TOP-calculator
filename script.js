@@ -35,9 +35,10 @@ function operate(operator, a, b) {
 
 function btnClick(button) {
     // click button event listener
-    let button = document.querySelector('button');
+    let button = document.querySelectorAll('button');
     let btnContent = btn.textContent;
     button.addEventListener('click', (e) => {
+        console.log(hey);
         // store display in variable
         let disp = document.querySelector('.display');
         // change display text content to button text content
@@ -46,3 +47,4 @@ function btnClick(button) {
     // store button in variable
     // show number on display
 };
+
