@@ -49,14 +49,13 @@ buttons.forEach(button => {
         let displayText = display.textContent;
         switch (target.className) {
             case 'opsa':
-                if (button.textContent == ' . ' && display.textContent.includes(' . ') === false) {
+                if (target.textContent == '.' && display.textContent.includes('.') === false) {
                     display.textContent = display.textContent.concat(button.textContent);
                 } else {
                     console.log('I am just here for decoration');
                 };
                 break;
             case 'ops':
-                input.operator = button.textContent;
                 display.textContent = display.textContent.concat(button.textContent);
                 break;
             case 'clear':
@@ -67,53 +66,33 @@ buttons.forEach(button => {
                 break;
             case 'num':
                 let btnText = button.textContent;
-                display.textContent = display.textContent.concat(btnText);
+                display.textContent = displayText.concat(btnText);
                 break;
         };
 
     });
 
-    button.addEventListener('mouseup', (event) => { // MOUSEUP triggers code to update the input object values for numbers (and decimals)
-    let target = event.target;
-    let displayText = display.textContent;
+    let opButtons = document.querySelectorAll('.ops');
 
-    switch (target.className) {
-        case 'num':
-            input.num1 = displayText;
-            console.log(input);
-        case 'ops':
-            let btnText = target.textContent;
-            let opsIndex = displayText.indexOf(btnText);
-            input.num1 = displayText.substring(1, opsIndex);
-            break;
-    };
+    opButtons.forEach(opButton => {
+        opButton.addEventListener('mousedown', (event) => {
+            const target = event.target;
 
-    });
-});
-
-
-
-let opButtons = document.querySelectorAll('.ops');
-
-opButtons.forEach(opButton => {
-    opButton.addEventListener('mousedown', (event) => {
-        const target = event.target;
-
-        switch (target.textContent) {
-            case '+':
-                input.operator = '+';
-                console.log(input);
-                break;
-            case '-':
-                input.operator = '-';
-                console.log(input);
-                break;
-            case 'x':
-                input.operator = 'x';
-                console.log(input);
-                break;
-            case '/':
-                input.operator = '/';
+            switch (target.textContent) {
+                case '+':
+                    input.operator = '+';
+                    console.log(input.operator);
+                    break;
+                case '-':
+                    input.operator = '-';
+                    console.log(input.operator);
+                    break;
+                case 'x':
+                    input.operator = 'x';
+                    console.log(input.operator);
+                    break;
+                case '/':
+                    input.operator = '/';
                     console.log(input.operator);
                     break;
             };
@@ -124,35 +103,42 @@ opButtons.forEach(opButton => {
 
     button.addEventListener('mouseup', (event) => { // MOUSEUP triggers code to update the input object values for numbers (and decimals)
         let target = event.target;
-        let displayText = display.textContent;
+        let displayText = '';
 
         switch (target.className) {
             case 'num':
-                input.num1 = displayText.substring(1);
+                input.num1 = display.textContent.slice(1);
                 break;
             case 'ops':
                 let btnText = target.textContent;
-                let opsIndex = displayText.indexOf(btnText);
-                input.num1 = displayText.substring(1, opsIndex);
-                input.operator = displayText[opsIndex]; // Returns any button textContent
-                let displayTextEnd = displayText.charAt(-1);
+                let opsIndex = display.textContent.indexOf(btnText);
+                input.num1 = display.textContent.slice(1, opsIndex);
+                input.operator = display.textContent[opsIndex];
+                let displayTextEnd = display.textContent.charAt(display.textContent.length - 1);
                 if (displayTextEnd !== '+'
                     || displayTextEnd !== '-'
                     || displayTextEnd !== 'x'
                     || displayTextEnd !== '/'
-                ) {
-                    input.num1 = displayText.substring(1, opsIndex);
+                ) { 
+                    displayText = display.textContent;
+                    input.num1 = displayText.slice(1, opsIndex);
                     input.num2 = '';
-                } else
-                    input.num2 = displayText.substring(opsIndex); // Returns first 3 digits of displayText 
+                } else {
+                    displayText = display.textContent;
+                    input.num1 = displayText.slice(1, opsIndex);
+                    input.num2 = displayText.slice(opsIndex);
+                    
+                };
 
                 console.log(input);
                 break;
         };
 
-
     });
 });
+
+
+
 
 
 // access the variables to perform the correct operation
