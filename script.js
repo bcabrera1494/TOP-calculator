@@ -200,3 +200,4 @@ buttons.forEach(button => {
 // Add a backspace button
 // Add keyboard support
 // Could shorten the long if __ || statemetnts into array methods for more elegant code
+// Fix the bug with the zero button. You can't add more than one '0' to the end of display.textContent.
