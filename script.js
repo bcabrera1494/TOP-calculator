@@ -182,4 +182,10 @@ buttons.forEach(button => {
 
 
 
-
+// Only evaluate 1 pair of numbers at a time
+// Use the result of a calculation as input.num1 of the next calculation
+// Round long decimal answers to the nearest tenth
+// Make sure there is no bug if press = before any operator
+// Display an error if user tries to divide by 0
+// Add a backspace button
+// Add keyboard support
