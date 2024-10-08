@@ -14,21 +14,21 @@ function divide(a, b) {
     return a / b;
 };
 
-let num1 = Number;
-let num2 = Number;
+let num1 = '';
+let num2 = '';
 let op = '';
 
 function operate(operator, a, b) {
-    if (operator = '+') {
+    if (input.operator = '+') {
         return add(a, b);
     };
-    if (operator = '-') {
+    if (input.operator = '-') {
         return subtract(a, b);
     };
-    if (operator = '*') {
+    if (input.operator = '*') {
         return multiply(a, b);
     };
-    if (operator = '/') {
+    if (input.operator = '/') {
         return divide(a, b);
     };
 };
@@ -97,9 +97,12 @@ buttons.forEach(button => {
         });
     });
 
-    let equals = buttons.querySelector('id', 'equals');
-    equals.addEventListener('mousedown', (event) {
-
+    let equals = document.getElementById('equals');
+    equals.addEventListener('mousedown', () => {
+        num1 = Number(input.num1);
+        num2 = Number(input.num2);
+        op = input.operator;
+        console.log(operate(op, num1, num2));
     });
 
     button.addEventListener('mouseup', (event) => { // MOUSEUP triggers code to update the input object values for numbers (and decimals)
