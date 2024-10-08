@@ -177,7 +177,7 @@ buttons.forEach(button => {
                 return display.textContent = "ERROR";
             } else {
             console.log(answer);
-            display.textContent = answer;
+            display.textContent = answer.toFixed(2)};
 
     });
 
