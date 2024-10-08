@@ -65,9 +65,11 @@ buttons.forEach(button => {
                 display.textContent = display.textContent.concat(button.textContent);
                 break;
             case 'clear':
-                if (target.id === 'backspace') {
-                    let displayText = display.textContent;
+                if (target.id === 'backspace' && display.textContent.length > 1) {
                     display.textContent = display.textContent.slice(0, -1);
+                }
+                else if (target.id === 'backspace' && display.textContent.length === 1) {
+                    display.textContent = '0';
                 } else {                
                     display.textContent = '0';
                     input.num1 = '';
