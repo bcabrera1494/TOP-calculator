@@ -81,19 +81,15 @@ buttons.forEach(button => {
             switch (target.textContent) {
                 case '+':
                     input.operator = '+';
-                    console.log(input.operator);
                     break;
                 case '-':
                     input.operator = '-';
-                    console.log(input.operator);
                     break;
                 case 'x':
                     input.operator = 'x';
-                    console.log(input.operator);
                     break;
                 case '/':
                     input.operator = '/';
-                    console.log(input.operator);
                     break;
             };
 
@@ -117,16 +113,14 @@ buttons.forEach(button => {
                     || displayTextEnd !== 'x'
                     || displayTextEnd !== '/'
                 ) {
-                    displayText = display.textContent;
+                    let displayText = display.textContent;
                     input.num1 = displayText.slice(1, opsIndex);
                     input.num2 = '';
                 } else {
                     displayText = display.textContent;
                     input.num1 = displayText.slice(1, opsIndex);
                     input.num2 = displayText.slice(opsIndex);
-
                 };
-
                 console.log(input);
                 break;
             case 'num':
@@ -134,22 +128,24 @@ buttons.forEach(button => {
                 if (displayText.includes('+') === true) {
                     let plusIndex = displayText.indexOf('+');
                     input.num2 = displayText.slice(plusIndex+1);
+                    console.log(input);
                 };
                 if (displayText.includes('-') === true) {
                     let minusIndex = displayText.indexOf('-');
                     input.num2 = displayText.slice(minusIndex+1);
+                    console.log(input);
                 };
                 if (displayText.includes('x') === true) {
                     let xIndex = displayText.indexOf('x');
                     input.num2 = displayText.slice(xIndex+1);
+                    console.log(input);
 
                 };
                 if (displayText.includes('/') === true) {
                     let divideIndex = displayText.indexOf('/');
                     input.num2 = displayText.slice(divideIndex+1);
+                    console.log(input);
                 };
-                // input.num1 = displayText.slice(1);
-            //    input.num2 = displayText.slice(opsIndex, end);
                 break;
 
         };
