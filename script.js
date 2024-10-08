@@ -88,16 +88,25 @@ buttons.forEach(button => {
 
             switch (target.textContent) {
                 case '+':
-                    input.operator = '+';
+                    if (input.operator !== "" ){
+                        break;
+                    } else {
+                    input.operator = '+'};
                     break;
                 case '-':
-                    input.operator = '-';
+                    if (input.operator!== ""){
+                        break;
+                    } else {input.operator = '-'};
                     break;
                 case 'x':
-                    input.operator = 'x';
+                    if (input.operator !== ""){
+                        break;
+                    } else {input.operator = 'x'};
                     break;
                 case '/':
-                    input.operator = '/';
+                    if (input.operator !== ""){
+                        break;
+                    } else {input.operator = '/'};
                     break;
             };
 
@@ -124,7 +133,6 @@ buttons.forEach(button => {
                 let btnText = target.textContent;
                 let opsIndex = display.textContent.indexOf(btnText);
                 input.num1 = display.textContent.slice(1, opsIndex);
-                input.operator = display.textContent[opsIndex];
                 let displayTextEnd = display.textContent.charAt(display.textContent.length - 1);
                 if (displayTextEnd !== '+'
                     || displayTextEnd !== '-'
@@ -175,6 +183,3 @@ buttons.forEach(button => {
 
 
 
-// access the variables to perform the correct operation
-// return the solution
-// update the display to the solution
