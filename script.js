@@ -14,6 +14,22 @@ function divide(a, b) {
     return a / b;
 };
 
+function percent(a) {
+    return a/100;
+};
+
+function posNeg(a) {
+    if (a > 0) {
+        return -a;
+    };
+    if (a < 0) {
+        return Math.abs(a);
+    };
+    if (a===0) {
+        return 0;
+    };
+};
+
 let num1 = '';
 let num2 = '';
 let op = '';
