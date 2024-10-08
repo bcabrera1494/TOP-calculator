@@ -131,6 +131,15 @@ buttons.forEach(button => {
                         break;
                     } else {input.operator = '/'};
                     break;
+                case '%':
+                    if (input.operator !== ""){
+                        break;
+                    } else {input.operator = '%'};
+                    break;
+                case '+/-':
+                    if (input.operator !== "") {
+                        break;
+                    } else {input.operator = '+/-'};
             };
 
 
