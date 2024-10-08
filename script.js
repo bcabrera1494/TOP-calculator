@@ -56,6 +56,12 @@ buttons.forEach(button => {
                 };
                 break;
             case 'ops':
+                if (display.textContent.includes('+') === true
+                || display.textContent.includes('-') === true
+                || display.textContent.includes('x') === true
+                || display.textContent.includes('/') === true) {
+                    break;
+                }
                 display.textContent = display.textContent.concat(button.textContent);
                 break;
             case 'clear':
