@@ -97,6 +97,11 @@ buttons.forEach(button => {
         });
     });
 
+    let equals = buttons.querySelector('id', 'equals');
+    equals.addEventListener('mousedown', (event) {
+
+    });
+
     button.addEventListener('mouseup', (event) => { // MOUSEUP triggers code to update the input object values for numbers (and decimals)
         let target = event.target;
         let displayText = '';
