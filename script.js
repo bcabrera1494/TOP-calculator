@@ -102,7 +102,9 @@ buttons.forEach(button => {
         num1 = Number(input.num1);
         num2 = Number(input.num2);
         op = input.operator;
-        console.log(operate(op, num1, num2));
+        let answer = operate(op, num1, num2);
+        console.log(answer);
+        display.textContent = answer;
     });
 
     button.addEventListener('mouseup', (event) => { // MOUSEUP triggers code to update the input object values for numbers (and decimals)
