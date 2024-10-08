@@ -19,16 +19,16 @@ let num2 = '';
 let op = '';
 
 function operate(operator, a, b) {
-    if (input.operator = '+') {
+    if (input.operator === '+') {
         return add(a, b);
     };
-    if (input.operator = '-') {
+    if (input.operator === '-') {
         return subtract(a, b);
     };
-    if (input.operator = '*') {
+    if (input.operator === 'x') {
         return multiply(a, b);
     };
-    if (input.operator = '/') {
+    if (input.operator === '/') {
         return divide(a, b);
     };
 };
