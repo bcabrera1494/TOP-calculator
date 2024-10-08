@@ -114,6 +114,38 @@ opButtons.forEach(opButton => {
                 break;
             case '/':
                 input.operator = '/';
+                    console.log(input.operator);
+                    break;
+            };
+
+
+        });
+    });
+
+    button.addEventListener('mouseup', (event) => { // MOUSEUP triggers code to update the input object values for numbers (and decimals)
+        let target = event.target;
+        let displayText = display.textContent;
+
+        switch (target.className) {
+            case 'num':
+                input.num1 = displayText.substring(1);
+                break;
+            case 'ops':
+                let btnText = target.textContent;
+                let opsIndex = displayText.indexOf(btnText);
+                input.num1 = displayText.substring(1, opsIndex);
+                input.operator = displayText[opsIndex]; // Returns any button textContent
+                let displayTextEnd = displayText.charAt(-1);
+                if (displayTextEnd !== '+'
+                    || displayTextEnd !== '-'
+                    || displayTextEnd !== 'x'
+                    || displayTextEnd !== '/'
+                ) {
+                    input.num1 = displayText.substring(1, opsIndex);
+                    input.num2 = '';
+                } else
+                    input.num2 = displayText.substring(opsIndex); // Returns first 3 digits of displayText 
+
                 console.log(input);
                 break;
         };
