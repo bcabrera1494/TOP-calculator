@@ -61,14 +61,16 @@ const display = document.querySelector('.display');
 buttons.forEach(button => {
     button.addEventListener('mousedown', (event) => { // MOUSEDOWN triggers code to update the calculator displayText
         const target = event.target;
-        // display.textContent = ''; -----> Trying to initialize display content here so that the 0 disappears upon click. Not working.
-        // let displayText = display.textContent;
         switch (target.className) {
             case 'opsa':
                 if (target.textContent == '.' && display.textContent.includes('.') === false) {
                     display.textContent = display.textContent.concat(button.textContent);
-                } else {
-                    console.log('I am just here for decoration');
+                } ;
+                if (target.textContent == '%') {
+                    display.textContent = display.textContent.concat(button.textContent);
+                };
+                if(target.textContent == '+/-') {
+                    console.log('I should change a positive number to a negative number or vice versa');
                 };
                 break;
             case 'ops':
@@ -216,10 +218,9 @@ buttons.forEach(button => {
 
 // Only evaluate 1 pair of numbers at a time
 // Use the result of a calculation as input.num1 of the next calculation
-// Round long decimal answers to the nearest tenth
 // Make sure there is no bug if press = before any operator
 // Display an error if user tries to divide by 0
-// Add a backspace button
 // Add keyboard support
 // Could shorten the long if __ || statemetnts into array methods for more elegant code
 // Fix the bug with the zero button. You can't add more than one '0' to the end of display.textContent.
+// Make th % button return the number/100
