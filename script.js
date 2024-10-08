@@ -46,7 +46,7 @@ buttons.forEach(button => {
     button.addEventListener('mousedown', (event) => { // MOUSEDOWN triggers code to update the calculator displayText
         const target = event.target;
         // display.textContent = ''; -----> Trying to initialize display content here so that the 0 disappears upon click. Not working.
-        let displayText = display.textContent;
+        // let displayText = display.textContent;
         switch (target.className) {
             case 'opsa':
                 if (target.textContent == '.' && display.textContent.includes('.') === false) {
@@ -66,7 +66,9 @@ buttons.forEach(button => {
                 break;
             case 'num':
                 let btnText = button.textContent;
-                display.textContent = displayText.concat(btnText);
+                let zeroIndex = display.textContent.indexOf('0');
+                display.textContent = display.textContent.concat(btnText);
+                display.textContent = display.textContent.slice(zeroIndex+1);
                 break;
         };
 
@@ -124,11 +126,11 @@ buttons.forEach(button => {
                     || displayTextEnd !== '/'
                 ) {
                     let displayText = display.textContent;
-                    input.num1 = displayText.slice(1, opsIndex);
+                    input.num1 = displayText.slice(0, opsIndex);
                     input.num2 = '';
                 } else {
                     displayText = display.textContent;
-                    input.num1 = displayText.slice(1, opsIndex);
+                    input.num1 = displayText.slice(0, opsIndex);
                     input.num2 = displayText.slice(opsIndex);
                 };
                 console.log(input);
