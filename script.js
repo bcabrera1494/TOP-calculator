@@ -74,7 +74,7 @@ buttons.forEach(button => {
 
     let opButtons = document.querySelectorAll('.ops');
 
-    opButtons.forEach(opButton => {
+    opButtons.forEach(opButton => { // OPERATIONS buttons trigger assignment of the operator symbol to input.operator
         opButton.addEventListener('mousedown', (event) => {
             const target = event.target;
 
