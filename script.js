@@ -173,6 +173,9 @@ buttons.forEach(button => {
             num2 = Number(input.num2);
             op = input.operator;
             let answer = operate(op, num1, num2);
+            if (op === '/' && num2 === 0) {
+                return display.textContent = "ERROR";
+            } else {
             console.log(answer);
             display.textContent = answer;
 
