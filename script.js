@@ -106,9 +106,6 @@ buttons.forEach(button => {
         let displayText = '';
 
         switch (target.className) {
-            case 'num':
-                input.num1 = display.textContent.slice(1);
-                break;
             case 'ops':
                 let btnText = target.textContent;
                 let opsIndex = display.textContent.indexOf(btnText);
@@ -119,7 +116,7 @@ buttons.forEach(button => {
                     || displayTextEnd !== '-'
                     || displayTextEnd !== 'x'
                     || displayTextEnd !== '/'
-                ) { 
+                ) {
                     displayText = display.textContent;
                     input.num1 = displayText.slice(1, opsIndex);
                     input.num2 = '';
@@ -127,11 +124,34 @@ buttons.forEach(button => {
                     displayText = display.textContent;
                     input.num1 = displayText.slice(1, opsIndex);
                     input.num2 = displayText.slice(opsIndex);
-                    
+
                 };
 
                 console.log(input);
                 break;
+            case 'num':
+                let displayText = display.textContent;
+                if (displayText.includes('+') === true) {
+                    let plusIndex = displayText.indexOf('+');
+                    input.num2 = displayText.slice(plusIndex+1);
+                };
+                if (displayText.includes('-') === true) {
+                    let minusIndex = displayText.indexOf('-');
+                    input.num2 = displayText.slice(minusIndex+1);
+                };
+                if (displayText.includes('x') === true) {
+                    let xIndex = displayText.indexOf('x');
+                    input.num2 = displayText.slice(xIndex+1);
+
+                };
+                if (displayText.includes('/') === true) {
+                    let divideIndex = displayText.indexOf('/');
+                    input.num2 = displayText.slice(divideIndex+1);
+                };
+                // input.num1 = displayText.slice(1);
+            //    input.num2 = displayText.slice(opsIndex, end);
+                break;
+
         };
 
     });
