@@ -81,7 +81,6 @@ buttons.forEach(button => {
     });
 
     let opButtons = document.querySelectorAll('.ops');
-
     opButtons.forEach(opButton => { // OPERATIONS buttons trigger assignment of the operator symbol to input.operator
         opButton.addEventListener('mousedown', (event) => {
             const target = event.target;
@@ -112,16 +111,6 @@ buttons.forEach(button => {
 
 
         });
-    });
-
-    let equals = document.getElementById('equals');
-    equals.addEventListener('mousedown', () => {
-        num1 = Number(input.num1);
-        num2 = Number(input.num2);
-        op = input.operator;
-        let answer = operate(op, num1, num2);
-        console.log(answer);
-        display.textContent = answer;
     });
 
     button.addEventListener('mouseup', (event) => { // MOUSEUP triggers code to update the input object values for numbers (and decimals)
@@ -177,6 +166,24 @@ buttons.forEach(button => {
         };
 
     });
+
+    let equals = document.getElementById('equals'); // EQUALS button calls operate()
+    equals.addEventListener('click', () => {
+            num1 = Number(input.num1);
+            num2 = Number(input.num2);
+            op = input.operator;
+            let answer = operate(op, num1, num2);
+            console.log(answer);
+            display.textContent = answer;
+
+    });
+
+    // equals.addEventListener('mouseup', () => {
+    //     display.textContent = answer;
+    //     input.num1 = answer;
+    //     input.num2 = "";
+    //     input.operator = ""; 
+    // })
 });
 
 
@@ -189,3 +196,4 @@ buttons.forEach(button => {
 // Display an error if user tries to divide by 0
 // Add a backspace button
 // Add keyboard support
+// Could shorten the long if __ || statemetnts into array methods for more elegant code
