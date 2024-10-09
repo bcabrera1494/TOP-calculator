@@ -72,13 +72,6 @@ buttons.forEach(button => {
                 if (target.textContent == '.' && display.textContent.includes('.') === false) {
                     display.textContent = display.textContent.concat(button.textContent);
                 };
-                if (target.textContent == '%') {
-                    display.textContent = display.textContent.concat(button.textContent);
-                };
-                if (target.textContent == '+/-') {
-                    console.log('I should change a positive number to a negative number or vice versa');
-                };
-                break;
             case 'ops':
                 if (display.textContent.includes('+') === true
                     || display.textContent.includes('-') === true
@@ -149,13 +142,14 @@ buttons.forEach(button => {
                     if (input.operator !== "") {
                         break;
                     } else { input.operator = '+/-' };
+                    break;
             };
 
 
         });
     });
 
-    button.addEventListener('mouseup', (event) => { // MOUSEUP triggers code to update the input object values for numbers (and decimals)
+    button.addEventListener('mouseup', (event) => { // MOUSEUP triggers code to update the input object values for numbers (and decimals). For Ops and ops a, it maintains the objct values for numbers. 
         let target = event.target;
         let displayText = '';
 
@@ -214,12 +208,12 @@ buttons.forEach(button => {
         num1 = Number(input.num1);
         num2 = Number(input.num2);
         op = input.operator;
-        let answer = operate(op, num1, num2);
+        let answer = operate(op, num1, num2)//.toFixed(2);
         if (op === '/' && num2 === 0) {
             return display.textContent = "ERROR";
         } else {
             console.log(answer);
-            display.textContent = answer.toFixed(2)
+            display.textContent = answer.toFixed(2);
         };
 
     });
