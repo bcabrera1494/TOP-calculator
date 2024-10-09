@@ -65,7 +65,7 @@ let buttons = document.querySelectorAll('button');
 const display = document.querySelector('.display');
 
 buttons.forEach(button => {
-    button.addEventListener('mousedown', (event) => { // MOUSEDOWN triggers code to update the calculator displayText
+    button.addEventListener('mousedown', (event) => { // MOUSEDOWN triggers code to update the calculator displayText. For +/- it has to call operate().
         const target = event.target;
         switch (target.className) {
             case 'opsa':
@@ -77,10 +77,22 @@ buttons.forEach(button => {
                     || display.textContent.includes('-') === true
                     || display.textContent.includes('x') === true
                     || display.textContent.includes('/') === true
-                    || display.textContent.includes('%') === true
-                    || display.textContent.includes('+/-') === true) {
+                    || display.textContent.includes('%') === true)
+                     {
                     break;
-                } else {display.textContent = display.textContent.concat(button.textContent)}
+                } 
+                if (target.textContent === '+/-') {
+                    // Needs to update input.num1 and input.operator & convert the strings into numbers
+                    input.num1 = display.textContent;
+                    input.operator = target.textContent;
+                    let num1 = Number(input.num1);
+                    let op = input.operator;
+                    // Needs to call the operate function 
+                    let answer = operate(op, num1);
+                    display.textContent = answer;
+                    // Update display to negative or positive 
+                    break;
+                } else {display.textContent = display.textContent.concat(button.textContent)};
                 break;
             case 'clear':
                 if (target.id === 'backspace' && display.textContent.length > 1) {
@@ -208,7 +220,7 @@ buttons.forEach(button => {
         num1 = Number(input.num1);
         num2 = Number(input.num2);
         op = input.operator;
-        let answer = operate(op, num1, num2)//.toFixed(2);
+        let answer = operate(op, num1, num2);
         if (op === '/' && num2 === 0) {
             return display.textContent = "ERROR";
         } else {
@@ -217,13 +229,6 @@ buttons.forEach(button => {
         };
 
     });
-
-    // equals.addEventListener('mouseup', () => {
-    //     display.textContent = answer;
-    //     input.num1 = answer;
-    //     input.num2 = "";
-    //     input.operator = ""; 
-    // })
 });
 
 
