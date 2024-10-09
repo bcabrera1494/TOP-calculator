@@ -96,11 +96,15 @@ buttons.forEach(button => {
                 break;
             case 'num':
                 // If the current display value is 0 or 0.00, do the original method to splice the 0 off the beginning
+                if (display.textContent === '0' || display.textContent == '0.00') {
+                    let btnText = button.textContent;
+                    let zeroIndex = display.textContent.indexOf('0');
+                    display.textContent = display.textContent.concat(btnText);
+                    display.textContent = display.textContent.slice(zeroIndex + 1)
+                } else {
+                    display.textContent = display.textContent.concat(button.textContent);
+                };
                 // Else, just append the current number to the existing display
-                let btnText = button.textContent;
-                let zeroIndex = display.textContent.indexOf('0');
-                display.textContent = display.textContent.concat(btnText);
-                display.textContent = display.textContent.slice(zeroIndex + 1);
                 break;
         };
 
@@ -113,14 +117,14 @@ buttons.forEach(button => {
 
             switch (target.textContent) {
                 case '+':
-                    if (input.operator !== "" && input.num2 !== ""){
+                    if (input.operator !== "" && input.num2 !== "") {
                         break;
                     } else {
                         input.operator = '+'
                     };
                     break;
                 case '-':
-                    if (input.operator !== "" && input.num2 !== "")  {
+                    if (input.operator !== "" && input.num2 !== "") {
                         break;
                     } else { input.operator = '-' };
                     break;
@@ -241,7 +245,6 @@ buttons.forEach(button => {
 // Only evaluate 1 pair of numbers at a time
 // Use the result of a calculation as input.num1 of the next calculation
 // Make sure there is no bug if press = before any operator
-// Display an error if user tries to divide by 0
 // Add keyboard support
 // Could shorten the long if __ || statemetnts into array methods for more elegant code
 // Fix the bug with the zero button. You can't add more than one '0' to the end of display.textContent.
