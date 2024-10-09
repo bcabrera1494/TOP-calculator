@@ -224,6 +224,9 @@ buttons.forEach(button => {
         op = input.operator;
         let answer = operate(op, num1);
         display.textContent = answer;
+        input.num1 = answer;
+        console.log(input);
+        console.log(answer);
     });
     // Needs to update display
     // Needs to update num1 and op
