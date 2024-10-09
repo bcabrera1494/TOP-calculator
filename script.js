@@ -162,8 +162,12 @@ buttons.forEach(button => {
         switch (target.className) {
             case 'ops':
                 let btnText = target.textContent;
-                let opsIndex = display.textContent.indexOf(btnText);
-                input.num1 = display.textContent.slice(1, opsIndex);
+                let displayArr = display.textContent.split(`${input.operator}`);
+                input.num1 = displayArr[0];
+                console.log(displayArr);
+                console.log(input);
+                // let opsIndex = display.textContent.indexOf(btnText);
+                // input.num1 = display.textContent.slice(1, opsIndex);
                 let displayTextEnd = display.textContent.charAt(display.textContent.length - 1);
                 if ((displayTextEnd !== '+' && input.operator !== "")
                     || (displayTextEnd !== '-' && input.operator !== "")
@@ -171,10 +175,13 @@ buttons.forEach(button => {
                     || (displayTextEnd !== '/' && input.operator !== "")
                 ) {
                     let displayText = display.textContent;
-                    input.num1 = displayText.slice(0, opsIndex);
-                    input.num2 = displayText.slice(opsIndex + 1);
-                    input.operator = displayTextEnd; // Fixes the bug that won't change the operator if its the second expression & user is taking the answer from the previous expression for the next expression.
-                }
+                    let displayArray = displayText.split(`${input.operator}`); // turn the displayText into an array split by the operator
+                    input.num1 = displayArray[0];
+                    input.num2 = displayArray[1];
+                    input.operator = displayTextEnd;
+                    console.log(displayArray);
+                    console.log(input);
+                    }
                     // filter out the numbers until the operator to assign to input.num1
                     // filter out numbers after the operator to assign to input.num2
                     // Assign operator
