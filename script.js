@@ -166,7 +166,7 @@ buttons.forEach(button => {
         });
     });
 
-    button.addEventListener('mouseup', (event) => { // MOUSEUP triggers code to update the input object values for numbers (and decimals). For Ops and ops a, it maintains the objct values for numbers. 
+    button.addEventListener('mouseup', (event) => { // MOUSEUP triggers code to update the input object values for numbers (and decimals). For inputs that are a negative number where +/- is pressed, it will call operate()
         let target = event.target;
         let displayText = '';
 
@@ -181,9 +181,13 @@ buttons.forEach(button => {
                     || displayTextEnd !== 'x'
                     || displayTextEnd !== '/'
                 ) {
-                    if (display.textContent[0] === '-'){
-                        input.num1 = display.textContent.slice(1);
+                    if (display.textContent[0] === '-' && target.textContent == '+/-'){
+                        input.num1 = display.textContent;
                         input.ops = '+/-'
+                        num1 = input.num1;
+                        op = input.ops;
+                        let answer = operate(op, num1);
+                        display.textContent = answer;
                         break;
                     };
                     let displayText = display.textContent;
