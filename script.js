@@ -77,7 +77,8 @@ buttons.forEach(button => {
                     || display.textContent.includes('-') === true
                     || display.textContent.includes('x') === true
                     || display.textContent.includes('/') === true
-                    || display.textContent.includes('%') === true) {
+                    || display.textContent.includes('%') === true
+                    || target.textContent === ('+/-')) {
                     break;
                 } else {display.textContent = display.textContent.concat(button.textContent) };
                 break;
