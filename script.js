@@ -154,7 +154,7 @@ buttons.forEach(button => {
         });
     });
 
-    button.addEventListener('mouseup', (event) => { // MOUSEUP triggers code to update the input object values for numbers (and decimals). For inputs that are a negative number where +/- is pressed, it will call operate()
+    button.addEventListener('mouseup', (event) => { // MOUSEUP triggers code to update the input object values for numbers
         let target = event.target;
         let displayText = '';
 
@@ -171,7 +171,7 @@ buttons.forEach(button => {
                 ) {
                     let displayText = display.textContent;
                     input.num1 = displayText.slice(0, opsIndex);
-                    input.num2 = displayText.slice(opsIndex+1);
+                    input.num2 = displayText.slice(opsIndex + 1);
                     input.operator = displayTextEnd; // Fixes the bug that won't change the operator if its the second expression & user is taking the answer from the previous expression for the next expression.
                 };
                 if (btnText === '+/-') {
@@ -216,6 +216,9 @@ buttons.forEach(button => {
         let answer = operate(op, num1, num2);
         if (op === '/' && num2 === 0) {
             return display.textContent = "ERROR";
+        }
+        if (input.operator === "") {
+            return display.textContent = "ERROR"
         } else {
             console.log(answer);
             display.textContent = answer.toFixed(2);
@@ -248,4 +251,4 @@ buttons.forEach(button => {
 // Make sure there is no bug if press = before any operator
 // Add keyboard support
 // Could shorten the long if __ || statemetnts into array methods for more elegant code
-// Fix the bug with the zero button. You can't add more than one '0' to the end of display.textContent.
+// Fix bug that causes calculator to only run addition regardless of operator button pressed when using the last answer as num1.
