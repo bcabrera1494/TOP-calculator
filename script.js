@@ -175,6 +175,14 @@ buttons.forEach(button => {
                     input.num2 = displayText.slice(opsIndex + 1);
                     input.operator = displayTextEnd; // Fixes the bug that won't change the operator if its the second expression & user is taking the answer from the previous expression for the next expression.
                 }
+                    // filter out the numbers until the operator to assign to input.num1
+                    // filter out numbers after the operator to assign to input.num2
+                    // Assign operator
+                    
+                //     input.num1 = displayText.slice(0, opsIndex);
+                //     input.num2 = displayText.slice(opsIndex + 1); // slice method causing bug that causes input.num2 to get assigned operators appendedto the number.
+                //     input.operator = displayTextEnd; // Fixes the bug that won't change the operator if its the second expression & user is taking the answer from the previous expression for the next expression.
+                // }
                 if (btnText === '+/-') {
                     break;
                 } else {
