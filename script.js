@@ -95,6 +95,8 @@ buttons.forEach(button => {
                 }
                 break;
             case 'num':
+                // If the current display value is 0 or 0.00, do the original method to splice the 0 off the beginning
+                // Else, just append the current number to the existing display
                 let btnText = button.textContent;
                 let zeroIndex = display.textContent.indexOf('0');
                 display.textContent = display.textContent.concat(btnText);
