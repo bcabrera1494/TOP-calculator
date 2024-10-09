@@ -79,24 +79,6 @@ buttons.forEach(button => {
                     || display.textContent.includes('/') === true
                     || display.textContent.includes('%') === true) {
                     break;
-                }
-                if (target.textContent === '+/-') {
-                    if (display.textContent.includes('-' === true)) {
-                        input.num1 = display.textContent.slice(-1);
-                        input.operator = target.textContent
-                        let num1 = input.num1;
-                        let op = input.operator;
-                        let answer = operate(op, num1);
-                        display.textContent = answer;
-                    } else {
-                        input.num1 = display.textContent;
-                        input.operator = target.textContent;
-                        let num1 = Number(input.num1);
-                        let op = input.operator;
-                        let answer = operate(op, num1);
-                        display.textContent = answer;
-                    };
-                    break;
                 } else {display.textContent = display.textContent.concat(button.textContent) };
                 break;
                 // // if (target.textContent === '+/-') {
@@ -198,21 +180,7 @@ buttons.forEach(button => {
                     || displayTextEnd !== '-' 
                     || displayTextEnd !== 'x'
                     || displayTextEnd !== '/'
-                ) {
-                    if (display.textContent[0] === '-' && target.textContent == '+/-'){
-                        input.num1 = display.textContent;
-                        input.ops = '+/-'
-                        num1 = input.num1;
-                        op = input.ops;
-                        let answer = operate(op, num1);
-                        display.textContent = answer;
-                        break;
-                    };
-                    let displayText = display.textContent;
-                    input.num1 = displayText.slice(0, opsIndex);
-                    input.num2 = '';
-                } else {
-                    displayText = display.textContent;
+                ){  let displayText = display.textContent;
                     input.num1 = displayText.slice(0, opsIndex);
                     input.num2 = displayText.slice(opsIndex);
                 };
@@ -276,9 +244,21 @@ buttons.forEach(button => {
         };
 
     });
+
+    // Click event listener for +/-
+    let signChange = document.getElementById('posneg');
+    signChange.addEventListener('click', () => {
+        input.num1 = display.textContent;
+        num1 = input.num1;
+        op = input.operator;
+        let answer = operate(op, num1);
+        display.textContent = answer;
+    });
+    // Needs to update display
+    // Needs to update num1 and op
+    // Needs to call operate()
+
 });
-
-
 
 
 // Only evaluate 1 pair of numbers at a time
