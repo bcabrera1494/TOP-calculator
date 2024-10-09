@@ -239,16 +239,11 @@ buttons.forEach(button => {
         console.log(input);
         console.log(answer);
     });
-    // Needs to update display
-    // Needs to update num1 and op
-    // Needs to call operate()
+
 
 });
 
 
 // Only evaluate 1 pair of numbers at a time
-// Use the result of a calculation as input.num1 of the next calculation
-// Make sure there is no bug if press = before any operator
 // Add keyboard support
 // Could shorten the long if __ || statemetnts into array methods for more elegant code
-// Fix bug that causes calculator to only run addition regardless of operator button pressed when using the last answer as num1.
