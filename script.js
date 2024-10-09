@@ -15,7 +15,7 @@ function divide(a, b) {
 };
 
 function percent(a) {
-    return a/100;
+    return a / 100;
 };
 
 function posNeg(a) {
@@ -25,7 +25,7 @@ function posNeg(a) {
     if (a < 0) {
         return Math.abs(a);
     };
-    if (a===0) {
+    if (a === 0) {
         return 0;
     };
 };
@@ -47,6 +47,12 @@ function operate(operator, a, b) {
     if (input.operator === '/') {
         return divide(a, b);
     };
+    if (input.operator === '%') {
+        return percent(a);
+    };
+    if (input.operator === '+/-') {
+        return posNeg(a);
+    };
 };
 // declare empty object
 const input = {
@@ -65,19 +71,19 @@ buttons.forEach(button => {
             case 'opsa':
                 if (target.textContent == '.' && display.textContent.includes('.') === false) {
                     display.textContent = display.textContent.concat(button.textContent);
-                } ;
+                };
                 if (target.textContent == '%') {
                     display.textContent = display.textContent.concat(button.textContent);
                 };
-                if(target.textContent == '+/-') {
+                if (target.textContent == '+/-') {
                     console.log('I should change a positive number to a negative number or vice versa');
                 };
                 break;
             case 'ops':
                 if (display.textContent.includes('+') === true
-                || display.textContent.includes('-') === true
-                || display.textContent.includes('x') === true
-                || display.textContent.includes('/') === true) {
+                    || display.textContent.includes('-') === true
+                    || display.textContent.includes('x') === true
+                    || display.textContent.includes('/') === true) {
                     break;
                 }
                 display.textContent = display.textContent.concat(button.textContent);
@@ -88,17 +94,18 @@ buttons.forEach(button => {
                 }
                 else if (target.id === 'backspace' && display.textContent.length === 1) {
                     display.textContent = '0';
-                } else {                
+                } else {
                     display.textContent = '0';
                     input.num1 = '';
                     input.num2 = '';
-                    input.operator = '';}
+                    input.operator = '';
+                }
                 break;
             case 'num':
                 let btnText = button.textContent;
                 let zeroIndex = display.textContent.indexOf('0');
                 display.textContent = display.textContent.concat(btnText);
-                display.textContent = display.textContent.slice(zeroIndex+1);
+                display.textContent = display.textContent.slice(zeroIndex + 1);
                 break;
         };
 
@@ -111,35 +118,36 @@ buttons.forEach(button => {
 
             switch (target.textContent) {
                 case '+':
-                    if (input.operator !== "" ){
+                    if (input.operator !== "") {
                         break;
                     } else {
-                    input.operator = '+'};
+                        input.operator = '+'
+                    };
                     break;
                 case '-':
-                    if (input.operator!== ""){
+                    if (input.operator !== "") {
                         break;
-                    } else {input.operator = '-'};
+                    } else { input.operator = '-' };
                     break;
                 case 'x':
-                    if (input.operator !== ""){
+                    if (input.operator !== "") {
                         break;
-                    } else {input.operator = 'x'};
+                    } else { input.operator = 'x' };
                     break;
                 case '/':
-                    if (input.operator !== ""){
+                    if (input.operator !== "") {
                         break;
-                    } else {input.operator = '/'};
+                    } else { input.operator = '/' };
                     break;
                 case '%':
-                    if (input.operator !== ""){
+                    if (input.operator !== "") {
                         break;
-                    } else {input.operator = '%'};
+                    } else { input.operator = '%' };
                     break;
                 case '+/-':
                     if (input.operator !== "") {
                         break;
-                    } else {input.operator = '+/-'};
+                    } else { input.operator = '+/-' };
             };
 
 
@@ -175,23 +183,23 @@ buttons.forEach(button => {
                 let displayText = display.textContent;
                 if (displayText.includes('+') === true) {
                     let plusIndex = displayText.indexOf('+');
-                    input.num2 = displayText.slice(plusIndex+1);
+                    input.num2 = displayText.slice(plusIndex + 1);
                     console.log(input);
                 };
                 if (displayText.includes('-') === true) {
                     let minusIndex = displayText.indexOf('-');
-                    input.num2 = displayText.slice(minusIndex+1);
+                    input.num2 = displayText.slice(minusIndex + 1);
                     console.log(input);
                 };
                 if (displayText.includes('x') === true) {
                     let xIndex = displayText.indexOf('x');
-                    input.num2 = displayText.slice(xIndex+1);
+                    input.num2 = displayText.slice(xIndex + 1);
                     console.log(input);
 
                 };
                 if (displayText.includes('/') === true) {
                     let divideIndex = displayText.indexOf('/');
-                    input.num2 = displayText.slice(divideIndex+1);
+                    input.num2 = displayText.slice(divideIndex + 1);
                     console.log(input);
                 };
                 break;
@@ -202,15 +210,16 @@ buttons.forEach(button => {
 
     let equals = document.getElementById('equals'); // EQUALS button calls operate()
     equals.addEventListener('click', () => {
-            num1 = Number(input.num1);
-            num2 = Number(input.num2);
-            op = input.operator;
-            let answer = operate(op, num1, num2);
-            if (op === '/' && num2 === 0) {
-                return display.textContent = "ERROR";
-            } else {
+        num1 = Number(input.num1);
+        num2 = Number(input.num2);
+        op = input.operator;
+        let answer = operate(op, num1, num2);
+        if (op === '/' && num2 === 0) {
+            return display.textContent = "ERROR";
+        } else {
             console.log(answer);
-            display.textContent = answer.toFixed(2)};
+            display.textContent = answer.toFixed(2)
+        };
 
     });
 
