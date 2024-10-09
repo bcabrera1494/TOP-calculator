@@ -117,34 +117,35 @@ buttons.forEach(button => {
 
             switch (target.textContent) {
                 case '+':
-                    if (input.operator !== "" && input.num2 !== "") {
+                    if (input.operator !== "") {
                         break;
-                    } else {
+                    } 
+                    else {
                         input.operator = '+'
                     };
                     break;
                 case '-':
-                    if (input.operator !== "" && input.num2 !== "") {
+                    if (input.operator !== "") {
                         break;
                     } else { input.operator = '-' };
                     break;
                 case 'x':
-                    if (input.operator !== "" && input.num2 !== "") {
+                    if (input.operator !== "") {
                         break;
                     } else { input.operator = 'x' };
                     break;
                 case '/':
-                    if (input.operator !== "" && input.num2 !== "") {
+                    if (input.operator !== "") {
                         break;
                     } else { input.operator = '/' };
                     break;
                 case '%':
-                    if (input.operator !== "" && input.num2 !== "") {
+                    if (input.operator !== "") {
                         break;
                     } else { input.operator = '%' };
                     break;
                 case '+/-':
-                    if (input.operator !== "" && input.num2 !== "") {
+                    if (input.operator !== "") {
                         break;
                     } else { input.operator = '+/-' };
                     break;
@@ -164,21 +165,22 @@ buttons.forEach(button => {
                 let opsIndex = display.textContent.indexOf(btnText);
                 input.num1 = display.textContent.slice(1, opsIndex);
                 let displayTextEnd = display.textContent.charAt(display.textContent.length - 1);
-                if (displayTextEnd !== '+'
-                    || displayTextEnd !== '-'
-                    || displayTextEnd !== 'x'
-                    || displayTextEnd !== '/'
+                if ((displayTextEnd !== '+' && input.operator !== "")
+                    || (displayTextEnd !== '-' && input.operator !== "")
+                    || (displayTextEnd !== 'x' && input.operator !== "")
+                    || (displayTextEnd !== '/' && input.operator !== "")
                 ) {
                     let displayText = display.textContent;
                     input.num1 = displayText.slice(0, opsIndex);
                     input.num2 = displayText.slice(opsIndex + 1);
                     input.operator = displayTextEnd; // Fixes the bug that won't change the operator if its the second expression & user is taking the answer from the previous expression for the next expression.
-                };
+                }
                 if (btnText === '+/-') {
+                    break;
+                } else {
                     break;
                 };
                 console.log(input);
-                break;
             case 'num':
                 let displayText = display.textContent;
                 if (displayText.includes('+') === true) {
