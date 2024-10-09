@@ -170,21 +170,6 @@ buttons.forEach(button => {
                 if (btnText === '+/-'){
                     break;
                 };
-                // ) {
-                //     if (display.textContent[0] === '-' && target.textContent == '+/-'){
-                //         input.num1 = display.textContent;
-                //         input.ops = '+/-'
-                //         num1 = input.num1;
-                //         op = input.ops;
-                //         let answer = operate(op, num1);
-                //         display.textContent = answer;
-                //         break;
-                //     };
-                //     let displayText = display.textContent;
-                //     input.num1 = displayText.slice(0, opsIndex);
-                //     input.num2 = '';
-                // } else {
-
                 console.log(input);
                 break;
             case 'num':
