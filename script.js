@@ -171,7 +171,8 @@ buttons.forEach(button => {
                 ) {
                     let displayText = display.textContent;
                     input.num1 = displayText.slice(0, opsIndex);
-                    input.num2 = displayText.slice(opsIndex);
+                    input.num2 = displayText.slice(opsIndex+1);
+                    input.operator = displayTextEnd; // Fixes the bug that won't change the operator if its the second expression & user is taking the answer from the previous expression for the next expression.
                 };
                 if (btnText === '+/-') {
                     break;
