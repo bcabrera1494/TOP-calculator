@@ -65,7 +65,7 @@ let buttons = document.querySelectorAll('button');
 const display = document.querySelector('.display');
 
 buttons.forEach(button => {
-    button.addEventListener('mousedown', (event) => { // MOUSEDOWN triggers code to update the calculator displayText. For +/- it has to call operate().
+    button.addEventListener('mousedown', (event) => { // MOUSEDOWN triggers code to update the calculator displayText. 
         const target = event.target;
         switch (target.className) {
             case 'opsa':
@@ -77,10 +77,9 @@ buttons.forEach(button => {
                     || display.textContent.includes('-') === true
                     || display.textContent.includes('x') === true
                     || display.textContent.includes('/') === true
-                    || display.textContent.includes('%') === true
-                    || target.textContent === ('+/-')) {
+                    || display.textContent.includes('%') === true) {
                     break;
-                } else {display.textContent = display.textContent.concat(button.textContent) };
+                } else { display.textContent = display.textContent.concat(button.textContent) };
                 break;
             case 'clear':
                 if (target.id === 'backspace' && display.textContent.length > 1) {
@@ -112,34 +111,34 @@ buttons.forEach(button => {
 
             switch (target.textContent) {
                 case '+':
-                    if (input.operator !== "") {
+                    if (input.operator !== "" && input.num2 !== ""){
                         break;
                     } else {
                         input.operator = '+'
                     };
                     break;
                 case '-':
-                    if (input.operator !== "") {
+                    if (input.operator !== "" && input.num2 !== "")  {
                         break;
                     } else { input.operator = '-' };
                     break;
                 case 'x':
-                    if (input.operator !== "") {
+                    if (input.operator !== "" && input.num2 !== "") {
                         break;
                     } else { input.operator = 'x' };
                     break;
                 case '/':
-                    if (input.operator !== "") {
+                    if (input.operator !== "" && input.num2 !== "") {
                         break;
                     } else { input.operator = '/' };
                     break;
                 case '%':
-                    if (input.operator !== "") {
+                    if (input.operator !== "" && input.num2 !== "") {
                         break;
                     } else { input.operator = '%' };
                     break;
                 case '+/-':
-                    if (input.operator !== "") {
+                    if (input.operator !== "" && input.num2 !== "") {
                         break;
                     } else { input.operator = '+/-' };
                     break;
@@ -160,14 +159,15 @@ buttons.forEach(button => {
                 input.num1 = display.textContent.slice(1, opsIndex);
                 let displayTextEnd = display.textContent.charAt(display.textContent.length - 1);
                 if (displayTextEnd !== '+'
-                    || displayTextEnd !== '-' 
+                    || displayTextEnd !== '-'
                     || displayTextEnd !== 'x'
                     || displayTextEnd !== '/'
-                ){  let displayText = display.textContent;
+                ) {
+                    let displayText = display.textContent;
                     input.num1 = displayText.slice(0, opsIndex);
                     input.num2 = displayText.slice(opsIndex);
                 };
-                if (btnText === '+/-'){
+                if (btnText === '+/-') {
                     break;
                 };
                 console.log(input);
@@ -224,7 +224,8 @@ buttons.forEach(button => {
         op = input.operator;
         let answer = operate(op, num1);
         display.textContent = answer;
-        input.num1 = answer;
+        let displayContent = display.textContent;
+        input.num1 = displayContent;
         console.log(input);
         console.log(answer);
     });
@@ -242,4 +243,3 @@ buttons.forEach(button => {
 // Add keyboard support
 // Could shorten the long if __ || statemetnts into array methods for more elegant code
 // Fix the bug with the zero button. You can't add more than one '0' to the end of display.textContent.
-// Make th % button return the number/100
