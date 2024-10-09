@@ -77,22 +77,27 @@ buttons.forEach(button => {
                     || display.textContent.includes('-') === true
                     || display.textContent.includes('x') === true
                     || display.textContent.includes('/') === true
-                    || display.textContent.includes('%') === true)
-                     {
+                    || display.textContent.includes('%') === true) {
                     break;
-                } 
+                }
                 if (target.textContent === '+/-') {
-                    // Needs to update input.num1 and input.operator & convert the strings into numbers
-                    input.num1 = display.textContent;
-                    input.operator = target.textContent;
-                    let num1 = Number(input.num1);
-                    let op = input.operator;
-                    // Needs to call the operate function 
-                    let answer = operate(op, num1);
-                    display.textContent = answer;
-                    // Update display to negative or positive 
+                    if (display.textContent.includes('-' === true)) {
+                        input.num1 = display.textContent.slice(-1);
+                        input.operator = target.textContent
+                        let num1 = input.num1;
+                        let op = input.operator;
+                        let answer = operate(op, num1);
+                        display.textContent = answer;
+                    } else {
+                        input.num1 = display.textContent;
+                        input.operator = target.textContent;
+                        let num1 = Number(input.num1);
+                        let op = input.operator;
+                        let answer = operate(op, num1);
+                        display.textContent = answer;
+                    };
                     break;
-                } else {display.textContent = display.textContent.concat(button.textContent)};
+                } else {display.textContent = display.textContent.concat(button.textContent) };
                 break;
             case 'clear':
                 if (target.id === 'backspace' && display.textContent.length > 1) {
@@ -172,10 +177,15 @@ buttons.forEach(button => {
                 input.num1 = display.textContent.slice(1, opsIndex);
                 let displayTextEnd = display.textContent.charAt(display.textContent.length - 1);
                 if (displayTextEnd !== '+'
-                    || displayTextEnd !== '-'
+                    || displayTextEnd !== '-' 
                     || displayTextEnd !== 'x'
                     || displayTextEnd !== '/'
                 ) {
+                    if (display.textContent[0] === '-'){
+                        input.num1 = display.textContent.slice(1);
+                        input.ops = '+/-'
+                        break;
+                    };
                     let displayText = display.textContent;
                     input.num1 = displayText.slice(0, opsIndex);
                     input.num2 = '';
