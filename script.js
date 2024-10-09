@@ -99,6 +99,24 @@ buttons.forEach(button => {
                     break;
                 } else {display.textContent = display.textContent.concat(button.textContent) };
                 break;
+                // // if (target.textContent === '+/-') {
+                // //     if (display.textContent.includes('-' === true)) {
+                // //         input.num1 = display.textContent.slice(-1);
+                // //         input.operator = target.textContent
+                // //         let num1 = input.num1;
+                // //         let op = input.operator;
+                // //         let answer = operate(op, num1);
+                // //         display.textContent = answer;
+                // //     } else {
+                // //         input.num1 = display.textContent;
+                // //         input.operator = target.textContent;
+                // //         let num1 = Number(input.num1);
+                // //         let op = input.operator;
+                // //         let answer = operate(op, num1);
+                // //         display.textContent = answer;
+                // //     };
+                //     break;
+                // } 
             case 'clear':
                 if (target.id === 'backspace' && display.textContent.length > 1) {
                     display.textContent = display.textContent.slice(0, -1);
@@ -198,6 +216,21 @@ buttons.forEach(button => {
                     input.num1 = displayText.slice(0, opsIndex);
                     input.num2 = displayText.slice(opsIndex);
                 };
+                // ) {
+                //     if (display.textContent[0] === '-' && target.textContent == '+/-'){
+                //         input.num1 = display.textContent;
+                //         input.ops = '+/-'
+                //         num1 = input.num1;
+                //         op = input.ops;
+                //         let answer = operate(op, num1);
+                //         display.textContent = answer;
+                //         break;
+                //     };
+                //     let displayText = display.textContent;
+                //     input.num1 = displayText.slice(0, opsIndex);
+                //     input.num2 = '';
+                // } else {
+
                 console.log(input);
                 break;
             case 'num':
