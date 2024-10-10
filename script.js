@@ -20,10 +20,7 @@ function percent(a) {
 
 function posNeg(a) {
     if (a > 0) {
-        return -a;
-    };
-    if (a < 0) {
-        return Math.abs(a);
+        return -1 * a
     };
     if (a === 0) {
         return 0;
@@ -73,9 +70,9 @@ buttons.forEach(button => {
                     display.textContent = display.textContent.concat(button.textContent);
                 };
             case 'ops':
-                if (display.textContent.includes('+') === true
-                    || display.textContent.includes('-') === true
-                    || display.textContent.includes('x') === true
+                if (display.textContent.includes('+') === true && input.num2 === ""
+                    || display.textContent.includes('-') === true && input.num2 === ""
+                    || display.textContent.includes('x') === true && input.num2 === ""
                     || display.textContent.includes('/') === true
                     || display.textContent.includes('%') === true) {
                     break;
@@ -119,10 +116,7 @@ buttons.forEach(button => {
                 case '+':
                     if (input.operator !== "") {
                         break;
-                    } 
-                    // if (input.operator !== "" & input.num1 !== "") {
-                    //     input.operator = '+';
-                    // }
+                    }
                     else {
                         input.operator = '+'
                     };
@@ -177,17 +171,15 @@ buttons.forEach(button => {
                     || (displayTextEnd !== '/' && input.operator !== "")
                 ) {
                     let displayText = display.textContent;
-                    input.operator = button.textContent;
-                    let displayArray = displayText.split(`${input.operator}`); // turn the displayText into an array split by the operator
-                    input.num1 = displayArray[0];
-                    input.num2 = displayArray[1];
-                    console.log(displayArray);
-                    console.log(input);
-                    }
-                    // filter out the numbers until the operator to assign to input.num1
-                    // filter out numbers after the operator to assign to input.num2
-                    // Assign operator
-                    
+                    if (input.num2 !== "") {
+                        input.operator = button.textContent;
+                        let displayArray = displayText.split(`${input.operator}`); // turn the displayText into an array split by the operator
+                        input.num1 = displayArray[0];
+                        input.num2 = displayArray[1];
+                        console.log(displayArray);
+                        console.log(input);
+                    };
+                };
                 if (btnText === '+/-') {
                     break;
                 } else {
@@ -259,5 +251,6 @@ buttons.forEach(button => {
 
 
 // Only evaluate 1 pair of numbers at a time *
+// Fix bug with +/- button
 // Add keyboard support
 // Could shorten the long if __ || statemetnts into array methods for more elegant code
