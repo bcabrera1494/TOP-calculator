@@ -120,6 +120,9 @@ buttons.forEach(button => {
                     if (input.operator !== "") {
                         break;
                     } 
+                    // if (input.operator !== "" & input.num1 !== "") {
+                    //     input.operator = '+';
+                    // }
                     else {
                         input.operator = '+'
                     };
@@ -166,8 +169,7 @@ buttons.forEach(button => {
                 input.num1 = displayArr[0];
                 console.log(displayArr);
                 console.log(input);
-                // let opsIndex = display.textContent.indexOf(btnText);
-                // input.num1 = display.textContent.slice(1, opsIndex);
+
                 let displayTextEnd = display.textContent.charAt(display.textContent.length - 1);
                 if ((displayTextEnd !== '+' && input.operator !== "")
                     || (displayTextEnd !== '-' && input.operator !== "")
@@ -175,10 +177,10 @@ buttons.forEach(button => {
                     || (displayTextEnd !== '/' && input.operator !== "")
                 ) {
                     let displayText = display.textContent;
+                    input.operator = button.textContent;
                     let displayArray = displayText.split(`${input.operator}`); // turn the displayText into an array split by the operator
                     input.num1 = displayArray[0];
                     input.num2 = displayArray[1];
-                    input.operator = displayTextEnd;
                     console.log(displayArray);
                     console.log(input);
                     }
@@ -186,16 +188,11 @@ buttons.forEach(button => {
                     // filter out numbers after the operator to assign to input.num2
                     // Assign operator
                     
-                //     input.num1 = displayText.slice(0, opsIndex);
-                //     input.num2 = displayText.slice(opsIndex + 1); // slice method causing bug that causes input.num2 to get assigned operators appendedto the number.
-                //     input.operator = displayTextEnd; // Fixes the bug that won't change the operator if its the second expression & user is taking the answer from the previous expression for the next expression.
-                // }
                 if (btnText === '+/-') {
                     break;
                 } else {
                     break;
-                };
-                console.log(input);
+                }
             case 'num':
                 let displayText = display.textContent;
                 if (displayText.includes('+') === true) {
@@ -243,8 +240,8 @@ buttons.forEach(button => {
 
     });
 
-    // Click event listener for +/-
-    let signChange = document.getElementById('posneg');
+    let signChange = document.getElementById('posneg'); // Click event listener for +/-
+
     signChange.addEventListener('click', () => {
         input.num1 = display.textContent;
         num1 = input.num1;
@@ -261,6 +258,6 @@ buttons.forEach(button => {
 });
 
 
-// Only evaluate 1 pair of numbers at a time
+// Only evaluate 1 pair of numbers at a time *
 // Add keyboard support
 // Could shorten the long if __ || statemetnts into array methods for more elegant code
