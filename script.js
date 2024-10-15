@@ -71,6 +71,7 @@ buttons.forEach(button => {
             case 'opsa':
                 if (target.textContent == '.' && display.textContent.includes('.') === false) {
                     display.textContent = display.textContent.concat(button.textContent);
+                   event.stopImmediatePropagation;
                 };
             case 'ops':
                 if (display.textContent.includes('+') === true && input.num2 === ""
@@ -78,9 +79,11 @@ buttons.forEach(button => {
                     || display.textContent.includes('x') === true && input.num2 === ""
                     || display.textContent.includes('/') === true
                     || display.textContent.includes('%') === true
-                    || target.textContent === '+/-') {
+                    || target.textContent === '+/-'
+                    || display.textContent.includes('.') === true) {
                     break;
-                } else { display.textContent = display.textContent.concat(button.textContent) };
+                }
+                else {display.textContent = display.textContent.concat(button.textContent) };
                 break;
             case 'clear':
                 if (target.id === 'backspace' && display.textContent.length > 1) {
@@ -109,51 +112,6 @@ buttons.forEach(button => {
                 break;
         };
 
-    });
-
-    let opButtons = document.querySelectorAll('.ops');
-    opButtons.forEach(opButton => { // OPERATIONS buttons trigger assignment of the operator symbol to input.operator
-        opButton.addEventListener('mousedown', (event) => {
-            const target = event.target;
-
-            switch (target.textContent) {
-                case '+':
-                    if (input.operator !== "") {
-                        break;
-                    }
-                    else {
-                        input.operator = '+'
-                    };
-                    break;
-                case '-':
-                    if (input.operator !== "") {
-                        break;
-                    } else { input.operator = '-' };
-                    break;
-                case 'x':
-                    if (input.operator !== "") {
-                        break;
-                    } else { input.operator = 'x' };
-                    break;
-                case '/':
-                    if (input.operator !== "") {
-                        break;
-                    } else { input.operator = '/' };
-                    break;
-                case '%':
-                    if (input.operator !== "") {
-                        break;
-                    } else { input.operator = '%' };
-                    break;
-                case '+/-':
-                    if (input.operator !== "") {
-                        break;
-                    } else { input.operator = '+/-' };
-                    break;
-            };
-
-
-        });
     });
 
     button.addEventListener('mouseup', (event) => { // MOUSEUP triggers code to update the input object values for numbers
@@ -212,9 +170,51 @@ buttons.forEach(button => {
         };
 
     });
+});
+
+let opButtons = document.querySelectorAll('.ops');
+opButtons.forEach(opButton => { // OPERATIONS buttons trigger assignment of the operator symbol to input.operator
+    opButton.addEventListener('mousedown', (event) => {
+        const target = event.target;
+
+        switch (target.textContent) {
+            case '+':
+                if (input.operator !== "") {
+                    break;
+                }
+                else {
+                    input.operator = '+'
+                };
+                break;
+            case '-':
+                if (input.operator !== "") {
+                    break;
+                } else { input.operator = '-' };
+                break;
+            case 'x':
+                if (input.operator !== "") {
+                    break;
+                } else { input.operator = 'x' };
+                break;
+            case '/':
+                if (input.operator !== "") {
+                    break;
+                } else { input.operator = '/' };
+                break;
+            case '%':
+                if (input.operator !== "") {
+                    break;
+                } else { input.operator = '%' };
+                break;
+            case '+/-':
+                if (input.operator !== "") {
+                    break;
+                } else { input.operator = '+/-' };
+                break;
+        };
 
 
-
+    });
 });
 let equals = document.getElementById('equals'); // EQUALS button calls operate()
 equals.addEventListener('click', () => {
