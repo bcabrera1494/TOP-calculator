@@ -80,7 +80,7 @@ buttons.forEach(button => {
                     || display.textContent.includes('/') === true
                     || display.textContent.includes('%') === true
                     || target.textContent === '+/-'
-                    || display.textContent.includes('.') === true) {
+                    || display.textContent.includes('.') === true && input.operator !== button.textContent && display.textContent.includes(button.textContent) === true) {
                     break;
                 }
                 else {display.textContent = display.textContent.concat(button.textContent) };
@@ -100,7 +100,7 @@ buttons.forEach(button => {
                 break;
             case 'num':
                 // If the current display value is 0 or 0.00, do the original method to splice the 0 off the beginning
-                if (display.textContent === '0' || display.textContent == '0.00') {
+                if (display.textContent === '0' || display.textContent === '0.00') {
                     let btnText = button.textContent;
                     let zeroIndex = display.textContent.indexOf('0');
                     display.textContent = display.textContent.concat(btnText);
@@ -244,7 +244,7 @@ signChange.addEventListener('click', (event) => {
     console.log(input);
     console.log(answer);
     display.textContent = answer;
-    event.stopImmediatePropagation;
+    input.operator = '';
 });
 
 // Add keyboard support
