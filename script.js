@@ -116,21 +116,21 @@ buttons.forEach(button => {
 
     button.addEventListener('mouseup', (event) => { // MOUSEUP triggers code to update the input object values for numbers
         let target = event.target;
-        let displayText = '';
 
         switch (target.className) {
             case 'ops':
                 let btnText = target.textContent;
-                let displayArr = display.textContent.split(`${input.operator}`);
+                input.operator = btnText;
+                let displayArr = display.textContent.split(`${btnText}`);
                 input.num1 = displayArr[0];
                 console.log(displayArr);
                 console.log(input);
                 if (btnText = '+/-') {break};
                 let displayTextEnd = display.textContent.charAt(display.textContent.length - 1);
-                if ((displayTextEnd !== '+' && input.operator !== "")
-                    || (displayTextEnd !== '-' && input.operator !== "")
-                    || (displayTextEnd !== 'x' && input.operator !== "")
-                    || (displayTextEnd !== '/' && input.operator !== "")
+                if ((displayTextEnd !== '+' )
+                    || (displayTextEnd !== '-' )
+                    || (displayTextEnd !== 'x' )
+                    || (displayTextEnd !== '/' )
                 ) {
                     let displayText = display.textContent;
                     if (input.num2 !== "") {
