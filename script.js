@@ -234,17 +234,20 @@ buttons.forEach(button => {
 
     let signChange = document.getElementById('posneg'); // Click event listener for +/-
 
-    signChange.addEventListener('click', () => {
-        input.num1 = display.textContent;
-        num1 = input.num1;
-        op = input.operator;
-        let answer = operate(op, num1);
+signChange.addEventListener('click', (event) => {
+    input.num1 = display.textContent;
+    input.operator = '+/-'
+    num1 = input.num1;
+    op = input.operator;
+    let answer = operate(op, num1);
         display.textContent = answer;
         let displayContent = display.textContent;
         input.num1 = displayContent;
-        console.log(input);
-        console.log(answer);
-    });
+    console.log(input);
+    console.log(answer);
+    display.textContent = answer;
+    event.stopImmediatePropagation;
+});
 
 
 });
