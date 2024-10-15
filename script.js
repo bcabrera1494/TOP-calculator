@@ -20,8 +20,11 @@ function percent(a) {
 
 function posNeg(a) {
     if (a > 0) {
-        return -1 * a
+        return -a
     };
+    if (a < 0) {
+        return (a*-1);
+    }
     if (a === 0) {
         return 0;
     };
@@ -74,7 +77,8 @@ buttons.forEach(button => {
                     || display.textContent.includes('-') === true && input.num2 === ""
                     || display.textContent.includes('x') === true && input.num2 === ""
                     || display.textContent.includes('/') === true
-                    || display.textContent.includes('%') === true) {
+                    || display.textContent.includes('%') === true
+                    || target.textContent === '+/-') {
                     break;
                 } else { display.textContent = display.textContent.concat(button.textContent) };
                 break;
@@ -163,7 +167,7 @@ buttons.forEach(button => {
                 input.num1 = displayArr[0];
                 console.log(displayArr);
                 console.log(input);
-
+                if (btnText = '+/-') {break};
                 let displayTextEnd = display.textContent.charAt(display.textContent.length - 1);
                 if ((displayTextEnd !== '+' && input.operator !== "")
                     || (displayTextEnd !== '-' && input.operator !== "")
@@ -180,11 +184,6 @@ buttons.forEach(button => {
                         console.log(input);
                     };
                 };
-                if (btnText === '+/-') {
-                    break;
-                } else {
-                    break;
-                }
             case 'num':
                 let displayText = display.textContent;
                 if (displayText.includes('+') === true) {
@@ -214,25 +213,27 @@ buttons.forEach(button => {
 
     });
 
-    let equals = document.getElementById('equals'); // EQUALS button calls operate()
-    equals.addEventListener('click', () => {
-        num1 = Number(input.num1);
-        num2 = Number(input.num2);
-        op = input.operator;
-        let answer = operate(op, num1, num2);
-        if (op === '/' && num2 === 0) {
-            return display.textContent = "ERROR";
-        }
-        if (input.operator === "") {
-            return display.textContent = "ERROR"
-        } else {
-            console.log(answer);
-            display.textContent = answer.toFixed(2);
-        };
 
-    });
 
-    let signChange = document.getElementById('posneg'); // Click event listener for +/-
+});
+let equals = document.getElementById('equals'); // EQUALS button calls operate()
+equals.addEventListener('click', () => {
+    num1 = Number(input.num1);
+    num2 = Number(input.num2);
+    op = input.operator;
+    let answer = operate(op, num1, num2);
+    if (op === '/' && num2 === 0) {
+        return display.textContent = "ERROR";
+    }
+    if (input.operator === "") {
+        return display.textContent = "ERROR"
+    } else {
+        console.log(answer);
+        display.textContent = answer.toFixed(2);
+    };
+
+});
+let signChange = document.getElementById('posneg'); // Click event listener for +/-
 
 signChange.addEventListener('click', (event) => {
     input.num1 = display.textContent;
@@ -240,20 +241,11 @@ signChange.addEventListener('click', (event) => {
     num1 = input.num1;
     op = input.operator;
     let answer = operate(op, num1);
-        display.textContent = answer;
-        let displayContent = display.textContent;
-        input.num1 = displayContent;
     console.log(input);
     console.log(answer);
     display.textContent = answer;
     event.stopImmediatePropagation;
 });
 
-
-});
-
-
-// Only evaluate 1 pair of numbers at a time *
-// Fix bug with +/- button
 // Add keyboard support
 // Could shorten the long if __ || statemetnts into array methods for more elegant code
