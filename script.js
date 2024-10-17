@@ -61,7 +61,7 @@ const input = {
     num2: '',
     num3: '',
     operator2: '',
-    num4: '',
+    num3: '',
 };
 
 let buttons = document.querySelectorAll('button');
