@@ -59,6 +59,9 @@ const input = {
     num1: '',
     operator: '',
     num2: '',
+    num3: '',
+    operator2: '',
+    num4: '',
 };
 
 let buttons = document.querySelectorAll('button');
