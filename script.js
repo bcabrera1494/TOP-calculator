@@ -142,6 +142,7 @@ buttons.forEach(button => {
                         console.log(input);
                     };
                 };
+                
             case 'num':
                 let displayText = display.textContent;
                 if (displayText.includes('+') === true) {
@@ -247,5 +248,9 @@ signChange.addEventListener('click', (event) => {
     input.operator = '';
 });
 
+// Evaluate only 1 pair of numbers at a time
+    // Could trigger an addition of new keyed items to the input and assign a num3, op2, num4? 
+// Bugs with +/- 
+    //operation/expression after this button is pressed is incorrectly assigned to input and the display
+    //+/- should function like the "clear" buttons if pressed w/o a number in the display
 // Add keyboard support
-// Could shorten the long if __ || statemetnts into array methods for more elegant code
