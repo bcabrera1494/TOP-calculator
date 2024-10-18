@@ -131,13 +131,22 @@ buttons.forEach(button => {
         switch (target.className) {
             case 'ops':
                 break; 
+                // // If the display text DOES have an operator, assign input.operator2
+                // if (display.textContent.includes('+') === true
+                //     || display.textContent.includes('-') === true
+                //     || display.textContent.includes('*') === true
+                //     || display.textContent.includes('/') === true) {
+                //         input.operator2 = button.textContent; // Assigns the last pressed ops button to input.operator2
+                //     } else {
+                //     // If the display text does not have an operator, assign input.operator
+                //     input.operator = button.textContent;
+                //     };
+
                 
             case 'num':
                 let displayArr = Array.from(display.textContent);
                 console.log(displayArr);
                 // Check if the display has operators
-                let operatorsArr = displayArr.filter(value => value === '+' || value === '-' || value === '*' || value === '/');
-                console.log(operatorsArr);
                 // If the display does not have any operators, assign to num1
                 // If the display has one operator, assign num1 and num2
                 // If the display has 2 operators, assign num 1, num 2, num 3 operator 1, operator 2
@@ -150,13 +159,17 @@ buttons.forEach(button => {
 });
 
 let opButtons = document.querySelectorAll('.ops');
-opButtons.forEach(opButton => { // OPERATIONS buttons trigger assignment of the operator symbol to input.operator
+opButtons.forEach(opButton => { // OPERATIONS buttons trigger assignment of the operator symbol to input.operator and input.operator2
     opButton.addEventListener('mousedown', (event) => {
         const target = event.target;
 
         switch (target.textContent) {
             case '+':
-                if (input.operator !== "") {
+                if (input.operator !== "" && input.operator2 !== "") {
+                    break;
+                }
+                if (input.operator !== "" && input.operator2 === "") {
+                    input.operator2 = '+';
                     break;
                 }
                 else {
@@ -164,13 +177,20 @@ opButtons.forEach(opButton => { // OPERATIONS buttons trigger assignment of the 
                 };
                 break;
             case '-':
-                if (input.operator !== "") {
+                if (input.operator !== "" && input.operator2 !== "") {
                     break;
-                } else { input.operator = '-' };
+                }
+                if (input.operator !== "" && input.operator2 === "") {
+                    input.operator2 = '-'
+                }
+                else { input.operator = '-' };
                 break;
             case 'x':
-                if (input.operator !== "") {
+                if (input.operator !== "" && input.operator2 !== "") {
                     break;
+                }
+                if (input.operator !== "" && input.operator2 === "") {
+                    input.operator2 = 'x'
                 } else { input.operator = 'x' };
                 break;
             case '/':
@@ -189,7 +209,7 @@ opButtons.forEach(opButton => { // OPERATIONS buttons trigger assignment of the 
                 } else { input.operator = '+/-' };
                 break;
         };
-
+console.log(input);
 
     });
 });
