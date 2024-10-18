@@ -130,40 +130,7 @@ buttons.forEach(button => {
 
         switch (target.className) {
             case 'ops':
-                // If the display text DOES have an operator, assign input.operator2
-                if (display.textContent.includes('+') === true
-                    || display.textContent.includes('-') === true
-                    || display.textContent.includes('*') === true
-                    || display.textContent.includes('/') === true) {
-                        input.operator2 = button.textContent; // Assigns the last pressed ops button to input.operator2
-                    } else {
-                    // If the display text does not have an operator, assign input.operator
-                    input.operator = button.textContent;
-                    };
-                // let btnText = target.textContent;
-                // input.operator = btnText;
-                // let displayArr = display.textContent.split(`${btnText}`);
-                // input.num1 = displayArr[0];
-                // console.log(displayArr);
-                // console.log(input);
-                // if (btnText = '+/-') {break};
-                // let displayTextEnd = display.textContent.charAt(display.textContent.length - 1);
-                // if ((displayTextEnd !== '+' && input.operator2 === '') // This series of statements deal with if the last character of the display string is an operator
-                //     || (displayTextEnd !== '-' && input.operator2 === '')
-                //     || (displayTextEnd !== 'x' && input.operator2 === '')
-                //     || (displayTextEnd !== '/' && input.operator2 === '')
-                // ) {
-                //     let displayText = display.textContent;
-                //     if (input.num2 !== "") { // If the input.num2 is DECLARED
-                //         input.operator = button.textContent; // assign input.operator 
-                //         let displayArray = displayText.split(`${input.operator}`); // turn the displayText into an array split by the operator
-                //         input.num1 = displayArray[0]; // assign input.num1
-                //         input.num2 = displayArray[1]; // assign input.num2
-                        
-                //         console.log(displayArray);
-                //         console.log(input);
-                //     }
-                // }
+                break; 
                 
             case 'num':
                 let displayArr = Array.from(display.textContent);
