@@ -99,6 +99,8 @@ buttons.forEach(button => {
                     input.num1 = '';
                     input.num2 = '';
                     input.operator = '';
+                    input.num3 = '';
+                    input.operator2 = '';
                 }
                 break;
             case 'num':
