@@ -159,7 +159,11 @@ buttons.forEach(button => {
                 //         let displayArray = displayText.split(`${input.operator}`); // turn the displayText into an array split by the operator
                 //         input.num1 = displayArray[0]; // assign input.num1
                 //         input.num2 = displayArray[1]; // assign input.num2
-
+                        
+                //         console.log(displayArray);
+                //         console.log(input);
+                //     }
+                // }
                 
             case 'num':
                 let displayArr = Array.from(display.textContent);
