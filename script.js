@@ -83,16 +83,7 @@ buttons.forEach(button => {
                    event.stopImmediatePropagation;
                 };
             case 'ops':
-                if (display.textContent.includes('+') === true && input.num2 === ""
-                    || display.textContent.includes('-') === true && input.num2 === ""
-                    || display.textContent.includes('x') === true && input.num2 === ""
-                    || display.textContent.includes('/') === true
-                    || display.textContent.includes('%') === true
-                    || target.textContent === '+/-'
-                    || display.textContent.includes('.') === true && input.operator !== button.textContent && display.textContent.includes(button.textContent) === true) {
-                    break;
-                }
-                else {display.textContent = display.textContent.concat(button.textContent) };
+                display.textContent = display.textContent.concat(button.textContent)
                 break;
             case 'clear':
                 if (target.id === 'backspace' && display.textContent.length > 1) {
