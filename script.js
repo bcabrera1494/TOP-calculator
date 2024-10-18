@@ -122,22 +122,15 @@ buttons.forEach(button => {
 
         switch (target.className) {
             case 'ops':
-                let btnText = target.textContent;
-                input.operator = btnText;
-                let displayArr = display.textContent.split(`${btnText}`);
-                input.num1 = displayArr[0];
-                console.log(displayArr);
-                console.log(input);
-                if (btnText = '+/-') {break};
-                let displayTextEnd = display.textContent.charAt(display.textContent.length - 1);
-                if ((displayTextEnd !== '+' )
-                    || (displayTextEnd !== '-' )
-                    || (displayTextEnd !== 'x' )
-                    || (displayTextEnd !== '/' )
-                ) {
-                    let displayText = display.textContent;
-                    if (input.num2 !== "") {
-                        input.operator = button.textContent;
+                // If the display text DOES have an operator, assign input.operator2
+                if (display.textContent.includes('+') === true
+                    || display.textContent.includes('-') === true
+                    || display.textContent.includes('*') === true
+                    || display.textContent.includes('/') === true) {
+                        input.operator2 = button.textContent; // Assigns the last pressed ops button to input.operator2
+                    } else {
+                    // If the display text does not have an operator, assign input.operator
+                    input.operator = button.textContent;
                         let displayArray = displayText.split(`${input.operator}`); // turn the displayText into an array split by the operator
                         input.num1 = displayArray[0];
                         input.num2 = displayArray[1];
