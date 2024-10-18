@@ -67,6 +67,12 @@ const input = {
 let buttons = document.querySelectorAll('button');
 const display = document.querySelector('.display');
 
+// Event listener to add keyboard input
+    // window.addEventListener("keydown", () => {
+    // const key = document.querySelector('button');
+    // key.click();
+    // });
+
 buttons.forEach(button => {
     button.addEventListener('mousedown', (event) => { // MOUSEDOWN triggers code to update the calculator displayText. 
         const target = event.target;
