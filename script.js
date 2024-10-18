@@ -61,7 +61,7 @@ const input = {
     num2: '',
     num3: '',
     operator2: '',
-    num3: '',
+    num4: '',
 };
 
 let buttons = document.querySelectorAll('button');
@@ -139,11 +139,6 @@ buttons.forEach(button => {
                     } else {
                     // If the display text does not have an operator, assign input.operator
                     input.operator = button.textContent;
-                        let displayArray = displayText.split(`${input.operator}`); // turn the displayText into an array split by the operator
-                        input.num1 = displayArray[0];
-                        input.num2 = displayArray[1];
-                        console.log(displayArray);
-                        console.log(input);
                     };
                 // let btnText = target.textContent;
                 // input.operator = btnText;
@@ -164,31 +159,18 @@ buttons.forEach(button => {
                 //         let displayArray = displayText.split(`${input.operator}`); // turn the displayText into an array split by the operator
                 //         input.num1 = displayArray[0]; // assign input.num1
                 //         input.num2 = displayArray[1]; // assign input.num2
-                        
+
                 
             case 'num':
-                let displayText = display.textContent;
-                if (displayText.includes('+') === true) {
-                    let plusIndex = displayText.indexOf('+');
-                    input.num2 = displayText.slice(plusIndex + 1);
-                    console.log(input);
-                };
-                if (displayText.includes('-') === true) {
-                    let minusIndex = displayText.indexOf('-');
-                    input.num2 = displayText.slice(minusIndex + 1);
-                    console.log(input);
-                };
-                if (displayText.includes('x') === true) {
-                    let xIndex = displayText.indexOf('x');
-                    input.num2 = displayText.slice(xIndex + 1);
-                    console.log(input);
-
-                };
-                if (displayText.includes('/') === true) {
-                    let divideIndex = displayText.indexOf('/');
-                    input.num2 = displayText.slice(divideIndex + 1);
-                    console.log(input);
-                };
+                let displayArr = Array.from(display.textContent);
+                console.log(displayArr);
+                // Check if the display has operators
+                let operatorsArr = displayArr.filter(value => value === '+' || value === '-' || value === '*' || value === '/');
+                console.log(operatorsArr);
+                // If the display does not have any operators, assign to num1
+                // If the display has one operator, assign num1 and num2
+                // If the display has 2 operators, assign num 1, num 2, num 3 operator 1, operator 2
+                // If the display has more then 2 operators, clear
                 break;
 
         };
