@@ -165,10 +165,6 @@ buttons.forEach(button => {
                 //         input.num1 = displayArray[0]; // assign input.num1
                 //         input.num2 = displayArray[1]; // assign input.num2
                         
-                //         console.log(displayArray);
-                //         console.log(input);
-                //     }
-                // }
                 
             case 'num':
                 let displayText = display.textContent;
