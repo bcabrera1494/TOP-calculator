@@ -122,17 +122,6 @@ buttons.forEach(button => {
         switch (target.className) {
             case 'ops':
                 break; 
-                // // If the display text DOES have an operator, assign input.operator2
-                // if (display.textContent.includes('+') === true
-                //     || display.textContent.includes('-') === true
-                //     || display.textContent.includes('*') === true
-                //     || display.textContent.includes('/') === true) {
-                //         input.operator2 = button.textContent; // Assigns the last pressed ops button to input.operator2
-                //     } else {
-                //     // If the display text does not have an operator, assign input.operator
-                //     input.operator = button.textContent;
-                //     };
-
                 
             case 'num':
                 let displayArr = Array.from(display.textContent);
@@ -151,7 +140,7 @@ buttons.forEach(button => {
 
 let opButtons = document.querySelectorAll('.ops');
 opButtons.forEach(opButton => { // OPERATIONS buttons trigger assignment of the operator symbol to input.operator and input.operator2
-    opButton.addEventListener('mousedown', (event) => {
+    opButton.addEventListener('mouseup', (event) => {
         const target = event.target;
 
         switch (target.textContent) {
