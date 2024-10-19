@@ -61,7 +61,6 @@ const input = {
     num2: '',
     num3: '',
     operator2: '',
-    num4: '',
 };
 
 let buttons = document.querySelectorAll('button');
@@ -124,12 +123,26 @@ buttons.forEach(button => {
                 break; 
                 
             case 'num':
+                // Turn the display string into an array 
                 let displayArr = Array.from(display.textContent);
                 console.log(displayArr);
-                // Check if the display has operators
-                // If the display does not have any operators, assign to num1
-                // If the display has one operator, assign num1 and num2
-                // If the display has 2 operators, assign num 1, num 2, num 3 operator 1, operator 2
+                if (displayArr.includes('+') === true
+                    || displayArr.includes('-') === true
+                    || displayArr.includes('/') === true
+                    || displayArr.includes('*') === true ) {
+                    let num1 = displayArr.slice(0,displayArr.indexOf(input.operator)); // slices out num1
+                    input.num1 = num1.join(''); // joins num1 into a string & assigns to input.num1
+                    let num2 = displayArr.slice(displayArr.indexOf(input.operator)+1, displayArr.indexOf(input.operator2)); // silces out num2
+                    input.num2 = num2.join(''); // joins num2 into a string & assigns to input.num2
+                    let num3 = displayArr.slice(displayArr.indexOf(input.operator2)+1); // slices out num3
+                    input.num3 = num3.join('');
+                    console.log(input);
+                }
+                // If the dispay has + and or -, x, /
+                    // input.num1 = all characters until the index of the first operator
+                    // input.num2 = all characters after the index of the operator EXCEPT the operator
+                    // input.num3 = all characters AFTER the last operator
+
                 // If the display has more then 2 operators, clear
                 break;
 
