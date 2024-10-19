@@ -37,16 +37,16 @@ let op = '';
 let op2 = '';
 
 function operate(operator, a, b) {
-    if (input.operator === '+') {
+    if (input.operator === '+' && input.operator2 === '') {
         return add(a, b);
     };
-    if (input.operator === '-') {
+    if (input.operator === '-' && input.operator2 === '') {
         return subtract(a, b);
     };
-    if (input.operator === 'x') {
+    if (input.operator === 'x' && input.operator2 === '') {
         return multiply(a, b);
     };
-    if (input.operator === '/') {
+    if (input.operator === '/' && input.operator2 === '') {
         return divide(a, b);
     };
     if (input.operator === '%') {
