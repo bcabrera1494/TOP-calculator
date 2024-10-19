@@ -202,16 +202,6 @@ opButtons.forEach(opButton => { // OPERATIONS buttons trigger assignment of the 
                     break;
                 } else { input.operator = '/' };
                 break;
-            case '%':
-                if (input.operator !== "") {
-                    break;
-                } else { input.operator = '%' };
-                break;
-            case '+/-':
-                if (input.operator !== "") {
-                    break;
-                } else { input.operator = '+/-' };
-                break;
         };
 console.log(input);
 
