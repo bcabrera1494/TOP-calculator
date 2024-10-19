@@ -247,6 +247,7 @@ signChange.addEventListener('click', (event) => {
     console.log(answer);
     display.textContent = answer;
     input.operator = '';
+    input.num1 = display.textContent;
 });
 
 let percentBtn = document.getElementById('percent'); // Click event listener for %
@@ -261,6 +262,7 @@ percentBtn.addEventListener('click', (event) => {
     console.log(answer);
     display.textContent = answer;
     input.operator = '';
+    input.num1 = display.textContent;
 });
 // Evaluate only 1 pair of numbers at a time
     // Could trigger an addition of new keyed items to the input and assign a num3, op2, num4? 
