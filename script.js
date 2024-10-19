@@ -68,11 +68,11 @@ const input = {
 let buttons = document.querySelectorAll('button');
 const display = document.querySelector('.display');
 
-// Event listener to add keyboard input
-    // window.addEventListener("keydown", () => {
-    // const key = document.querySelector('button');
-    // key.click();
-    // });
+    // Event listener to add keyboard input
+        // window.addEventListener("keydown", () => {
+        // const key = document.querySelector('button');
+        // key.click();
+        // });
 
 buttons.forEach(button => {
     button.addEventListener('mousedown', (event) => { // MOUSEDOWN triggers code to update the calculator displayText. 
@@ -98,7 +98,12 @@ buttons.forEach(button => {
                     input.num3 = '';
                     input.operator2 = '';
                     break;
-                } else {display.textContent = display.textContent.concat(button.textContent);                
+                } 
+                if (target.textContent === '+/-'
+                    || target.textContent === '%') {
+                        break;
+                } 
+                else {display.textContent = display.textContent.concat(button.textContent);                
                     break;
                 }
             case 'clear':
@@ -149,11 +154,14 @@ buttons.forEach(button => {
                     || displayArr.includes('*') === true ) {
                     let num1 = displayArr.slice(0,displayArr.indexOf(input.operator)); // slices out num1
                     input.num1 = num1.join(''); // joins num1 into a string & assigns to input.num1
-                    let num2 = displayArr.slice(displayArr.indexOf(input.operator)+1, displayArr.indexOf(input.operator2)); // silces out num2
-                    input.num2 = num2.join(''); // joins num2 into a string & assigns to input.num2
-                    let num3 = displayArr.slice(displayArr.indexOf(input.operator2)+1); // slices out num3
-                    input.num3 = num3.join('');
-                    console.log(input);
+                    let num2 = displayArr.slice(displayArr.indexOf(input.operator)+1);
+                    input.num2 = num2.join ('');
+                    if (input.operator2 !== '') {
+                        let num2 = displayArr.slice(displayArr.indexOf(input.operator)+1, displayArr.indexOf(input.operator2)); // silces out num2
+                        input.num2 = num2.join(''); // joins num2 into a string & assigns to input.num2
+                        let num3 = displayArr.slice(displayArr.indexOf(input.operator2)+1); // slices out num3
+                        input.num3 = num3.join('');
+                    }
                 } else {
                     input.num1 = displayArr.join('');
                 };
@@ -173,7 +181,8 @@ opButtons.forEach(opButton => { // OPERATIONS buttons trigger assignment of the 
                     break;
                 }
                 if (input.operator !== "" && input.operator2 === "") {
-                    input.operator2 = '+';
+                    // call operate to deal with input.operator and the first 2 numbers
+                    input.operator2 = '+'; // Assign input operator 2
                     break;
                 }
                 else {
@@ -219,9 +228,6 @@ equals.addEventListener('click', () => {
     }
     if (input.operator === "") {
         return display.textContent = "ERROR"
-    } else {
-        console.log(answer);
-        display.textContent = answer.toFixed(2);
     };
 
 });
@@ -229,7 +235,7 @@ let signChange = document.getElementById('posneg'); // Click event listener for 
 
 signChange.addEventListener('click', (event) => {
     input.num1 = display.textContent;
-    input.operator = '+/-'
+    input.operator = '+/-';
     num1 = input.num1;
     op = input.operator;
     let answer = operate(op, num1);
@@ -250,7 +256,7 @@ percentBtn.addEventListener('click', (event) => {
     let answer = operate (op, num1);
     console.log(input);
     console.log(answer);
-    display.textContent = answer;
+    display.textContent = answer.toFixed(2);
     input.operator = '';
     input.num1 = display.textContent;
 });
