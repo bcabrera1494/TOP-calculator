@@ -137,15 +137,9 @@ buttons.forEach(button => {
                     let num3 = displayArr.slice(displayArr.indexOf(input.operator2)+1); // slices out num3
                     input.num3 = num3.join('');
                     console.log(input);
-                }
-                // If the dispay has + and or -, x, /
-                    // input.num1 = all characters until the index of the first operator
-                    // input.num2 = all characters after the index of the operator EXCEPT the operator
-                    // input.num3 = all characters AFTER the last operator
-
-                // If the display has more then 2 operators, clear
-                break;
-
+                } else {
+                    input.num1 = displayArr.join('');
+                };
         };
 
     });
