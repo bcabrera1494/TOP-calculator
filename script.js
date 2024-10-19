@@ -32,7 +32,9 @@ function posNeg(a) {
 
 let num1 = '';
 let num2 = '';
+let num3 = '';
 let op = '';
+let op2 = '';
 
 function operate(operator, a, b) {
     if (input.operator === '+') {
@@ -219,6 +221,7 @@ let equals = document.getElementById('equals'); // EQUALS button calls operate()
 equals.addEventListener('click', () => {
     num1 = Number(input.num1);
     num2 = Number(input.num2);
+    num3 = Number(input.num3);
     op = input.operator;
     let answer = operate(op, num1, num2);
     if (op === '/' && num2 === 0) {
