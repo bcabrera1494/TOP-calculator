@@ -82,8 +82,23 @@ buttons.forEach(button => {
                    event.stopImmediatePropagation;
                 };
             case 'ops':
-                display.textContent = display.textContent.concat(button.textContent)
-                break;
+                if (input.operator2 !== ''
+                    || display.textContent[display.textContent.length -1] === '+'
+                    || display.textContent[display.textContent.length -1] === '-'
+                    || display.textContent[display.textContent.length -1] === 'x'
+                    || display.textContent[display.textContent.length -1] === '/'
+                ) {
+                    display.textContent = '0';
+                    alert('Too many operators!');
+                    input.num1 = '';
+                    input.num2 = '';
+                    input.operator = '';
+                    input.num3 = '';
+                    input.operator2 = '';
+                    break;
+                } else {display.textContent = display.textContent.concat(button.textContent);                
+                    break;
+                }
             case 'clear':
                 if (target.id === 'backspace' && display.textContent.length > 1) {
                     display.textContent = display.textContent.slice(0, -1);
