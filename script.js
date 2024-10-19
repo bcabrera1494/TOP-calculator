@@ -89,7 +89,7 @@ buttons.forEach(button => {
                     || display.textContent[display.textContent.length -1] === '/'
                 ) {
                     display.textContent = '0';
-                    alert('Too many operators!');
+                    alert('Too many operators pls chill and try again.');
                     input.num1 = '';
                     input.num2 = '';
                     input.operator = '';
