@@ -223,25 +223,34 @@ let equals = document.getElementById('equals'); // EQUALS button assigns values 
 equals.addEventListener('click', () => {
     // declare an array from display.textContent
     let displayArr = Array.from(display.textContent);
+    // Use the array to assign num1 , num 2, operator 1, operator 2
+    let num1 = displayArr.slice(0,displayArr.indexOf(input.operator)); // slices out num1
+    input.num1 = Number(num1.join('')); // assign input.num1 by joining the above string and turning it into a number
+    let num2 = displayArr.slice(displayArr.indexOf(input.operator)+1); // slices out num2
+    input.num2 = Number(num2.join ('')); // assign input.num2 by joining the above string and turning it into a number
+
     // if input.operator2 === "" , only use num1, num2, and operator
     if (input.operator2 === "") {
-    let num1 = displayArr.slice(0,displayArr.indexOf(input.operator)); // slices out num1
-    input.num1 = Number(num1.join(''));
-    let num2 = displayArr.slice(displayArr.indexOf(input.operator)+1); // slices out num2
-    input.num2 = Number(num2.join (''));
-    let op = input.operator;
-    let answer = operate(op, input.num1, input.num2);
-    display.textContent = answer;
-    input.num1 = answer.toString();
-    return;
+        let op = input.operator;
+        let answer = operate(op, input.num1, input.num2);
+        input.num1 = answer.toString();
+    return display.textContent = answer.toFixed(2);
     }
     // if input.operator2 !== "" && input.num3 !== "", operate on 1st pair, then operate using answer and num3
-    else if (input.operator2 !== "" && input.num3 !== "") {
-
+    else if (input.operator2 !== "") {
+        let op1 = input.operator;
+        let num2 = displayArr.slice((displayArr.indexOf(op1)+1), displayArr.lastIndexOf(input.operator2)); // slices out num2
+        input.num2 = Number(num2.join ('')); // assign input.num2 by joining the above string and turning it into a number
+        let answer1 = operate(op, input.num1, input.num2);
+        let op2 = input.operator2;
+        let num3 = displayArr.slice(displayArr.lastIndexOf(input.operator2)+1); // slices out num3
+        input.num3 = Number(num3.join(''));
+        let finalAnswer = operate(op2, answer1, input.num3);
+        return display.textContent = finalAnswer.toFixed(2);
     }
     // if input.operator 2 !== "" && input.num3 == "", break;
     else if (input.operator2 !== "" && input.num3 === "") {
-
+        console.log('break')
     }
     // if input.operator === "" 
     else if (input.operator === "") {
