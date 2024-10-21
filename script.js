@@ -23,7 +23,7 @@ function posNeg(a) {
         return -a
     };
     if (a < 0) {
-        return (a*-1);
+        return (a * -1);
     }
     if (a === 0) {
         return 0;
@@ -67,11 +67,11 @@ const input = {
 let buttons = document.querySelectorAll('button');
 const display = document.querySelector('.display');
 
-    // Event listener to add keyboard input * not yet functional, honestly just copied off of an example calculator from another student 
-        // window.addEventListener("keydown", () => {
-        // const key = document.querySelector('button');
-        // key.click();
-        // });
+// Event listener to add keyboard input * not yet functional, honestly just copied off of an example calculator from another student 
+// window.addEventListener("keydown", () => {
+// const key = document.querySelector('button');
+// key.click();
+// });
 
 buttons.forEach(button => {
     button.addEventListener('mousedown', (event) => { // MOUSEDOWN triggers code to update the calculator displayText. 
@@ -87,10 +87,10 @@ buttons.forEach(button => {
                     break;
                 }
             case 'ops':
-                if ( display.textContent[display.textContent.length -1] === '+'
-                    || display.textContent[display.textContent.length -1] === '-'
-                    || display.textContent[display.textContent.length -1] === 'x'
-                    || display.textContent[display.textContent.length -1] === '/'
+                if (display.textContent[display.textContent.length - 1] === '+'
+                    || display.textContent[display.textContent.length - 1] === '-'
+                    || display.textContent[display.textContent.length - 1] === 'x'
+                    || display.textContent[display.textContent.length - 1] === '/'
                 ) {
                     display.textContent = '0';
                     alert('Too many operators pls chill and try again.');
@@ -99,12 +99,13 @@ buttons.forEach(button => {
                     input.operator = '';
                     input.num3 = '';
                     break;
-                } 
+                }
                 if (target.textContent === '+/-'
                     || target.textContent === '%') {
-                        break;
-                } 
-                else {display.textContent = display.textContent.concat(button.textContent);                
+                    break;
+                }
+                else {
+                    display.textContent = display.textContent.concat(button.textContent);
                     break;
                 }
             case 'clear':
@@ -118,6 +119,7 @@ buttons.forEach(button => {
                     input.num1 = '';
                     input.num2 = '';
                     input.operator = '';
+                    input.operator2 = '';
                     input.num3 = '';
                 }
                 break;
@@ -136,7 +138,7 @@ buttons.forEach(button => {
         };
 
     });
- });
+});
 
 let opButtons = document.querySelectorAll('.ops');
 opButtons.forEach(opButton => { // OPERATIONS buttons trigger assignment of the operator symbol to input.operator and input.operator2
@@ -147,7 +149,7 @@ opButtons.forEach(opButton => { // OPERATIONS buttons trigger assignment of the 
             case '+':
                 if (input.operator !== "" && input.operator2 !== "") {
                     break;
-                }
+                };
                 if (input.operator !== "" && input.operator2 === "") {
                     input.operator2 = '+';
                     break;
@@ -202,7 +204,7 @@ opButtons.forEach(opButton => { // OPERATIONS buttons trigger assignment of the 
 
 let numButtons = document.querySelectorAll('.num');
 numButtons.forEach(numButton => { // NUMBER buttons trigger assignment of input.num1, input.num2, input.num3;
-    numButton.addEventListener ('mouseup', (event) => {
+    numButton.addEventListener('mouseup', (event) => {
         // declare display array 
         let displayArr = Array.from(display.textContent);
         // If there is no operator
@@ -210,17 +212,17 @@ numButtons.forEach(numButton => { // NUMBER buttons trigger assignment of input.
             input.num1 = displayArr.join('');
             input.num2 = '';
             input.num3 = '';
-        };
+        }
         // If there is 1 operator
-        if (input.operator !== "" && input.operator2 === "") {
+        else if (input.operator !== "" && input.operator2 === "") {
             input.num1 = displayArr.slice(0, displayArr.indexOf(input.operator)).join('');
-            input.num2 = displayArr.slice(displayArr.indexOf(input.operator)+1).join('');
-        };
+            input.num2 = displayArr.slice(displayArr.indexOf(input.operator) + 1).join('');
+        }
         // If there are 2 operators
-        if (input.operator !== "" && input.operator2 !== "") {
+        else if (input.operator !== "" && input.operator2 !== "") {
             input.num1 = displayArr.slice(0, displayArr.indexOf(input.operator)).join('');
-            input.num2 = displayArr.slice(displayArr.indexOf(input.operator)+1, displayArr.lastIndexOf(input.operator2)).join('');
-            input.num3 = displayArr.slice(displayArr.lastIndexOf(input.operator2)+1).join('');
+            input.num2 = displayArr.slice(displayArr.indexOf(input.operator) + 1, displayArr.lastIndexOf(input.operator2)).join('');
+            input.num3 = displayArr.slice(displayArr.lastIndexOf(input.operator2) + 1).join('');
         };
 
     })
@@ -236,7 +238,7 @@ equals.addEventListener('click', () => {
     };
 
     // if input.operator2 === "" , only use num1, num2, and operator
-    if (input.operator2 === ""){
+    if (input.operator2 === "") {
         op = input.operator;
         num1 = Number(input.num1);
         num2 = Number(input.num2);
@@ -250,8 +252,8 @@ equals.addEventListener('click', () => {
             input.num2 = '';
             input.operator = '';
             input.operator2 = '';
-        }
-    }
+        };
+    };
     // if input.operator2 !== "" && input.num3 !== "", operate on 1st pair, then operate using answer and num3
     if (input.operator2 !== "") {
         op = input.operator;
@@ -262,9 +264,9 @@ equals.addEventListener('click', () => {
             return display.textContent = "ERROR";
         }
         else {
-        op = input.operator2;
-        num3 = Number(input.num3);
-        let finalAnswer = operate(op, answer1, num3);
+            op = input.operator2;
+            num3 = Number(input.num3);
+            let finalAnswer = operate(op, answer1, num3);
             if (op === '/' && num3 === 0) {
                 return display.textContent = "ERROR";
             } else {
@@ -274,7 +276,9 @@ equals.addEventListener('click', () => {
                 input.operator = '';
                 input.operator2 = '';
                 return display.textContent = finalAnswer.toFixed(2);
-    }
+            };
+        };
+    };
     // if input.operator 2 !== "" && input.num3 == "", break;
     if (input.operator2 !== "" && input.num3 === "") {
         console.log('break')
@@ -308,7 +312,7 @@ percentBtn.addEventListener('click', (event) => {
     input.operator = '%';
     num1 = input.num1;
     op = input.operator;
-    let answer = operate (op, num1);
+    let answer = operate(op, num1);
     console.log(input);
     console.log(answer);
     display.textContent = answer.toFixed(2);
@@ -317,8 +321,8 @@ percentBtn.addEventListener('click', (event) => {
 });
 
 // Evaluate only 1 pair of numbers at a time
-    // Could trigger an addition of new keyed items to the input and assign a num3, op2, num4? 
+// Could trigger an addition of new keyed items to the input and assign a num3, op2, num4?
 // Bugs with +/- 
-    //operation/expression after this button is pressed is incorrectly assigned to input and the display
-    //+/- should function like the "clear" buttons if pressed w/o a number in the display
+//operation/expression after this button is pressed is incorrectly assigned to input and the display
+//+/- should function like the "clear" buttons if pressed w/o a number in the display
 // Add keyboard support
