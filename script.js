@@ -154,32 +154,48 @@ opButtons.forEach(opButton => { // OPERATIONS buttons trigger assignment of the 
                 }
                 else {
                     input.operator = '+';
+                    input.operator2 = '';
                 };
                 break;
             case '-':
                 if (input.operator !== "" && input.operator2 !== "") {
                     break;
-                }
+                };
                 if (input.operator !== "" && input.operator2 === "") {
-                    input.operator2 = '-'
+                    input.operator2 = '-';
+                    break;
                 }
-                else { input.operator = '-' };
+                else {
+                    input.operator = '-';
+                    input.operator2 = '';
+                };
                 break;
             case 'x':
                 if (input.operator !== "" && input.operator2 !== "") {
                     break;
-                }
+                };
                 if (input.operator !== "" && input.operator2 === "") {
-                    input.operator2 = 'x'
-                } else { input.operator = 'x' };
+                    input.operator2 = 'x';
+                    break;
+                } else {
+                    input.operator = 'x';
+                    input.operator2 = '';
+                };
                 break;
             case '/':
-                if (input.operator !== "") {
+                if (input.operator !== "" && input.operator2 !== "") {
                     break;
-                } else { input.operator = '/' };
+                };
+                if (input.operator !== "" && input.operator2 === ""){
+                    input.operator2 = '/';
+                    break;
+                } else {
+                    input.operator = '/'
+                    input.operator2 = '';
+                };
                 break;
         };
-console.log(input);
+        console.log(input);
 
     });
 });
