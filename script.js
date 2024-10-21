@@ -241,15 +241,15 @@ equals.addEventListener('click', () => {
         num1 = Number(input.num1);
         num2 = Number(input.num2);
         let answer = operate(op, num1, num2);
-            if (op === '/' && num2 === 0) { // Error instance
-                return display.textContent = "ERROR";
-            }
-            else {
-        display.textContent = answer.toFixed(2);
-        input.num1 = answer;
-        input.num2 = '';
-        input.operator = '';
-        input.operator2 = '';
+        if (op === '/' && num2 === 0) { // Error instance if user tries to divide by 0
+            return display.textContent = "ERROR";
+        }
+        else {
+            display.textContent = answer.toFixed(2);
+            input.num1 = answer;
+            input.num2 = '';
+            input.operator = '';
+            input.operator2 = '';
         }
     }
     // if input.operator2 !== "" && input.num3 !== "", operate on 1st pair, then operate using answer and num3
@@ -258,9 +258,16 @@ equals.addEventListener('click', () => {
         num1 = Number(input.num1);
         num2 = Number(input.num2);
         let answer1 = operate(op, num1, num2);
+        if (op === '/' && num2 === 0) { // Error instance
+            return display.textContent = "ERROR";
+        }
+        else {
         op = input.operator2;
         num3 = Number(input.num3);
         let finalAnswer = operate(op, answer1, num3);
+            if (op === '/' && num3 === 0) {
+                return display.textContent = "ERROR";
+            } else {
         input.num1 = finalAnswer;
         input.num2 = '';
         input.num3 = '';
