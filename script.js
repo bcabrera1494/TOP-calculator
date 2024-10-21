@@ -81,7 +81,7 @@ buttons.forEach(button => {
             case 'opsa':
                 if (target.textContent == '.' && display.textContent.includes('.') === false) {
                     display.textContent = display.textContent.concat(button.textContent);
-                   event.stopImmediatePropagation;
+                    break;
                 };
             case 'ops':
                 if (input.operator2 !== ''
