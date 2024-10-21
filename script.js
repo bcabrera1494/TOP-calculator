@@ -215,7 +215,34 @@ console.log(input);
 
     });
 });
-let equals = document.getElementById('equals'); // EQUALS button assigns values to input object & calls operate()
+
+let numButtons = document.querySelectorAll('.num');
+numButtons.forEach(numButton => { // NUMBER buttons trigger assignment of input.num1, input.num2, input.num3;
+    numButton.addEventListener ('mouseup', (event) => {
+        // declare display array 
+        let displayArr = Array.from(display.textContent);
+        // If there is no operator
+        if (input.operator === "") {
+            input.num1 = displayArr;
+            input.num2 = '';
+            input.num3 = '';
+        };
+        // If there is 1 operator
+        if (input.operator !== "" && input.operator2 === "") {
+            input.num1 = displayArr.slice(0, displayArr.indexOf(input.operator)+1);
+            input.num2 = displayArr.slice(displayArr.indexOf(input.operator));
+        }
+        // If there are 2 operators
+        if (input.operator !== "" && input.operator2 !== "") {
+            input.num1 = displayArr.slice(0, displayArr.indexOf(input.operator)+1);
+            input.num2 = displayArr.slice(displayArr.indexOf(input.operator)+1, displayArr.lastIndexOf(input.operator2));
+            input.num3 = displayArr.slice(lastIndexOf(input.operator2));
+        }
+
+    })
+})
+
+let equals = document.getElementById('equals'); // EQUALS references num1, num2, num3 and op from input object, then calls operate() and updates the answer display as well as the input object
 equals.addEventListener('click', () => {
     // declare an array from display.textContent
     let displayArr = Array.from(display.textContent);
