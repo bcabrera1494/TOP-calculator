@@ -82,7 +82,11 @@ buttons.forEach(button => {
                 if (target.textContent == '.' && display.textContent.includes('.') === false) {
                     display.textContent = display.textContent.concat(button.textContent);
                     break;
-                };
+                }
+                else if (target.textContent == '.' && display.textContent.includes('.') === true) {
+                    alert('Only one decimal point sista Mary.');
+                    break;
+                }
             case 'ops':
                 if (input.operator2 !== ''
                     || display.textContent[display.textContent.length -1] === '+'
@@ -247,7 +251,7 @@ equals.addEventListener('click', () => {
     if (input.operator === "") { // Error instance
         return display.textContent = "ERROR"
     };
-    if (op === '/' && num2 === 0) { // Error instance
+    if (op === '/' && input.num2 === 0) { // Error instance
         return display.textContent = "ERROR";
     };
 });
