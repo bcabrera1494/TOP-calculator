@@ -223,21 +223,21 @@ numButtons.forEach(numButton => { // NUMBER buttons trigger assignment of input.
         let displayArr = Array.from(display.textContent);
         // If there is no operator
         if (input.operator === "") {
-            input.num1 = displayArr;
+            input.num1 = displayArr.join('');
             input.num2 = '';
             input.num3 = '';
         };
         // If there is 1 operator
         if (input.operator !== "" && input.operator2 === "") {
-            input.num1 = displayArr.slice(0, displayArr.indexOf(input.operator)+1);
-            input.num2 = displayArr.slice(displayArr.indexOf(input.operator));
-        }
+            input.num1 = displayArr.slice(0, displayArr.indexOf(input.operator)).join('');
+            input.num2 = displayArr.slice(displayArr.indexOf(input.operator)+1).join('');
+        };
         // If there are 2 operators
         if (input.operator !== "" && input.operator2 !== "") {
-            input.num1 = displayArr.slice(0, displayArr.indexOf(input.operator)+1);
-            input.num2 = displayArr.slice(displayArr.indexOf(input.operator)+1, displayArr.lastIndexOf(input.operator2));
-            input.num3 = displayArr.slice(lastIndexOf(input.operator2));
-        }
+            input.num1 = displayArr.slice(0, displayArr.indexOf(input.operator)).join('');
+            input.num2 = displayArr.slice(displayArr.indexOf(input.operator)+1, displayArr.lastIndexOf(input.operator2)).join('');
+            input.num3 = displayArr.slice(displayArr.lastIndexOf(input.operator2)+1).join('');
+        };
 
     })
 })
