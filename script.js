@@ -268,12 +268,12 @@ equals.addEventListener('click', () => {
             if (op === '/' && num3 === 0) {
                 return display.textContent = "ERROR";
             } else {
-        input.num1 = finalAnswer;
-        input.num2 = '';
-        input.num3 = '';
-        input.operator = '';
-        input.operator2 = '';
-        return display.textContent = finalAnswer.toFixed(2);
+                input.num1 = finalAnswer;
+                input.num2 = '';
+                input.num3 = '';
+                input.operator = '';
+                input.operator2 = '';
+                return display.textContent = finalAnswer.toFixed(2);
     }
     // if input.operator 2 !== "" && input.num3 == "", break;
     if (input.operator2 !== "" && input.num3 === "") {
