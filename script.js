@@ -215,17 +215,26 @@ equals.addEventListener('click', () => {
     // declare an array from display.textContent
     let displayArr = Array.from(display.textContent);
 
+    if (input.operator === "") { // Error instance
+        return display.textContent = "ERROR"
+    };
+
     // if input.operator2 === "" , only use num1, num2, and operator
     if (input.operator2 === ""){
         op = input.operator;
         num1 = Number(input.num1);
         num2 = Number(input.num2);
         let answer = operate(op, num1, num2);
+            if (op === '/' && num2 === 0) { // Error instance
+                return display.textContent = "ERROR";
+            }
+            else {
         display.textContent = answer.toFixed(2);
         input.num1 = answer;
         input.num2 = '';
         input.operator = '';
         input.operator2 = '';
+        }
     }
     // if input.operator2 !== "" && input.num3 !== "", operate on 1st pair, then operate using answer and num3
     if (input.operator2 !== "") {
@@ -252,14 +261,6 @@ equals.addEventListener('click', () => {
     if (input.operator === "") {
         return;
     }
-
-    if (op === '/' && num2 === 0) { // Error instance
-        return display.textContent = "ERROR";
-    };
-
-    if (input.operator === "") { // Error instance
-        return display.textContent = "ERROR"
-    };
 
 });
 let signChange = document.getElementById('posneg'); // Click event listener for +/-
