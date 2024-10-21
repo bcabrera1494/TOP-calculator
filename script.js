@@ -37,16 +37,16 @@ let op = '';
 let op2 = '';
 
 function operate(operator, a, b) {
-    if (input.operator === '+' && input.operator2 === '') {
+    if (input.operator === '+') {
         return add(a, b);
     };
-    if (input.operator === '-' && input.operator2 === '') {
+    if (input.operator === '-') {
         return subtract(a, b);
     };
-    if (input.operator === 'x' && input.operator2 === '') {
+    if (input.operator === 'x') {
         return multiply(a, b);
     };
-    if (input.operator === '/' && input.operator2 === '') {
+    if (input.operator === '/') {
         return divide(a, b);
     };
     if (input.operator === '%') {
@@ -68,7 +68,7 @@ const input = {
 let buttons = document.querySelectorAll('button');
 const display = document.querySelector('.display');
 
-    // Event listener to add keyboard input
+    // Event listener to add keyboard input * not yet functional, honestly just copied off of an example calculator from another student 
         // window.addEventListener("keydown", () => {
         // const key = document.querySelector('button');
         // key.click();
@@ -137,38 +137,38 @@ buttons.forEach(button => {
 
     });
 
-    button.addEventListener('mouseup', (event) => { // MOUSEUP triggers code to update the input object values for numbers
-        let target = event.target;
+//     button.addEventListener('mouseup', (event) => { // MOUSEUP triggers code to update the input object values for numbers *** ORIGINALLY WORKING CODE*** 
+//         let target = event.target;
 
-        switch (target.className) {
-            case 'ops':
-                break; 
+//         switch (target.className) {
+//             case 'ops':
+//                 break; 
                 
-            case 'num':
-                // Turn the display string into an array 
-                let displayArr = Array.from(display.textContent);
-                console.log(displayArr);
-                if (displayArr.includes('+') === true
-                    || displayArr.includes('-') === true
-                    || displayArr.includes('/') === true
-                    || displayArr.includes('*') === true ) {
-                    let num1 = displayArr.slice(0,displayArr.indexOf(input.operator)); // slices out num1
-                    input.num1 = num1.join(''); // joins num1 into a string & assigns to input.num1
-                    let num2 = displayArr.slice(displayArr.indexOf(input.operator)+1);
-                    input.num2 = num2.join ('');
-                    if (input.operator2 !== '') {
-                        let num2 = displayArr.slice(displayArr.indexOf(input.operator)+1, displayArr.indexOf(input.operator2)); // silces out num2
-                        input.num2 = num2.join(''); // joins num2 into a string & assigns to input.num2
-                        let num3 = displayArr.slice(displayArr.indexOf(input.operator2)+1); // slices out num3
-                        input.num3 = num3.join('');
-                    }
-                } else {
-                    input.num1 = displayArr.join('');
-                };
-        };
+//             case 'num':
+//                 // Turn the display string into an array 
+//                 let displayArr = Array.from(display.textContent);
+//                 console.log(displayArr);
+//                 if (displayArr.includes('+') === true
+//                     || displayArr.includes('-') === true
+//                     || displayArr.includes('/') === true
+//                     || displayArr.includes('x') === true ) {
+//                     let num1 = displayArr.slice(0,displayArr.indexOf(input.operator)); // slices out num1
+//                     input.num1 = num1.join(''); // joins num1 into a string & assigns to input.num1
+//                     let num2 = displayArr.slice(displayArr.indexOf(input.operator)+1);
+//                     input.num2 = num2.join ('');
+//                     if (input.operator2 !== '') {
+//                         let num2 = displayArr.slice(displayArr.indexOf(input.operator)+1, displayArr.indexOf(input.operator2)); // silces out num2
+//                         input.num2 = num2.join(''); // joins num2 into a string & assigns to input.num2
+//                         let num3 = displayArr.slice(displayArr.indexOf(input.operator2)+1); // slices out num3
+//                         input.num3 = num3.join('');
+//                     }
+//                 } else {
+//                     input.num1 = displayArr.join('');
+//                 };
+//         };
 
-    });
-});
+//     });
+ });
 
 let opButtons = document.querySelectorAll('.ops');
 opButtons.forEach(opButton => { // OPERATIONS buttons trigger assignment of the operator symbol to input.operator and input.operator2
@@ -181,12 +181,11 @@ opButtons.forEach(opButton => { // OPERATIONS buttons trigger assignment of the 
                     break;
                 }
                 if (input.operator !== "" && input.operator2 === "") {
-                    // call operate to deal with input.operator and the first 2 numbers
-                    input.operator2 = '+'; // Assign input operator 2
+                    input.operator2 = '+';
                     break;
                 }
                 else {
-                    input.operator = '+'
+                    input.operator = '+';
                 };
                 break;
             case '-':
@@ -216,20 +215,41 @@ console.log(input);
 
     });
 });
-let equals = document.getElementById('equals'); // EQUALS button calls operate()
+let equals = document.getElementById('equals'); // EQUALS button assigns values to input object & calls operate()
 equals.addEventListener('click', () => {
-    num1 = Number(input.num1);
-    num2 = Number(input.num2);
-    num3 = Number(input.num3);
-    op = input.operator;
-    let answer = operate(op, num1, num2);
-    if (op === '/' && num2 === 0) {
-        return display.textContent = "ERROR";
+    // declare an array from display.textContent
+    let displayArr = Array.from(display.textContent);
+    // if input.operator2 === "" , only use num1, num2, and operator
+    if (input.operator2 === "") {
+    let num1 = displayArr.slice(0,displayArr.indexOf(input.operator)); // slices out num1
+    input.num1 = Number(num1.join(''));
+    let num2 = displayArr.slice(displayArr.indexOf(input.operator)+1); // slices out num2
+    input.num2 = Number(num2.join (''));
+    let op = input.operator;
+    let answer = operate(op, input.num1, input.num2);
+    display.textContent = answer;
+    input.num1 = answer.toString();
+    return;
     }
-    if (input.operator === "") {
+    // if input.operator2 !== "" && input.num3 !== "", operate on 1st pair, then operate using answer and num3
+    else if (input.operator2 !== "" && input.num3 !== "") {
+
+    }
+    // if input.operator 2 !== "" && input.num3 == "", break;
+    else if (input.operator2 !== "" && input.num3 === "") {
+
+    }
+    // if input.operator === "" 
+    else if (input.operator === "") {
+        return;
+    }
+
+    if (input.operator === "") { // Error instance
         return display.textContent = "ERROR"
     };
-
+    if (op === '/' && num2 === 0) { // Error instance
+        return display.textContent = "ERROR";
+    };
 });
 let signChange = document.getElementById('posneg'); // Click event listener for +/-
 
@@ -260,6 +280,7 @@ percentBtn.addEventListener('click', (event) => {
     input.operator = '';
     input.num1 = display.textContent;
 });
+
 // Evaluate only 1 pair of numbers at a time
     // Could trigger an addition of new keyed items to the input and assign a num3, op2, num4? 
 // Bugs with +/- 
