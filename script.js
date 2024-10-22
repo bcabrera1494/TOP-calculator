@@ -19,7 +19,7 @@ function percent(a) {
 };
 
 function posNeg(a) {
-    return -1*a;
+    return -1 * a;
 };
 
 let num1 = '';
@@ -60,9 +60,19 @@ let buttons = document.querySelectorAll('button');
 const display = document.querySelector('.display');
 
 // Event listener to add keyboard input * not yet functional, honestly just copied off of an example calculator from another student 
-// window.addEventListener("keydown", () => {
-// const key = document.querySelector('button');
-// key.click();
+window.addEventListener("keydown", (event) => {
+    let buttons = document.querySelectorAll('button');
+    buttons.forEach(button => {
+        let key = event.key
+        if (key == button.textContent) {
+            console.log(button.textContent);
+        }
+    })
+});
+
+// const clickEvent = new MouseEvent('click', {
+//     bubbles: true,
+//     cancellable:  true
 // });
 
 buttons.forEach(button => {
@@ -180,7 +190,7 @@ opButtons.forEach(opButton => { // OPERATIONS buttons trigger assignment of the 
                 if (input.operator !== "" && input.operator2 !== "") {
                     break;
                 };
-                if (input.operator !== "" && input.operator2 === ""){
+                if (input.operator !== "" && input.operator2 === "") {
                     input.operator2 = '/';
                     break;
                 } else {
