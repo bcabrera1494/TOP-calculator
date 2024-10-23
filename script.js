@@ -64,6 +64,16 @@ window.addEventListener("keypress", (event) => {
     let key = event.key
     console.log(key);
     let clickButton = document.getElementById(key);
+    let clickEventDown = new Event(('mousedown'), {
+        bubbles: true,
+        cancelable: true,
+        view: window
+    });
+    let clickEventUp = new Event(('mouseup'), {
+        bubbles: true,
+        cancelable: true,
+        view: window
+    });
     if (key == 'Enter' || key == '=') {
         let clickEvent = new Event(('click'), {
             bubbles: true,
@@ -73,20 +83,24 @@ window.addEventListener("keypress", (event) => {
         equals = document.getElementById('equals');
         equals.dispatchEvent(clickEvent);
     } else {
+        clickButton.dispatchEvent(clickEventDown);
+        clickButton.dispatchEvent(clickEventUp);
+    };
+});
+
+// Event listener to add delete keyboard input
+window.addEventListener("keydown", (event) => {
+
+    if (event.key == 'Backspace') {
+        let del = document.getElementById('backspace');
+        console.log(event.key);
         let clickEventDown = new Event(('mousedown'), {
             bubbles: true,
             cancelable: true,
             view: window
         });
-        let clickEventUp = new Event(('mouseup'), {
-            bubbles: true,
-            cancelable: true,
-            view: window
-        });
-        clickButton.dispatchEvent(clickEventDown);
-        clickButton.dispatchEvent(clickEventUp);
+        del.dispatchEvent(clickEventDown);
     };
-
 });
 
 
