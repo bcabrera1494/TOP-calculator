@@ -63,8 +63,18 @@ const display = document.querySelector('.display');
 window.addEventListener("keydown", (event) => {
     let key = event.key
     let clickButton = document.getElementById(key);
-    console.log(clickButton);
-    clickButton.click();
+    let clickEventDown = new Event(('mousedown'), {
+        bubbles: true,
+        cancelable: true,
+        view: window
+    });
+    let clickEventUp = new Event(('mouseup'), {
+        bubbles: true,
+        cancelable: true,
+        view: window
+    });
+    clickButton.dispatchEvent(clickEventDown);
+    clickButton.dispatchEvent(clickEventUp);
 });
 
 
