@@ -62,15 +62,9 @@ const display = document.querySelector('.display');
 // Event listener to add keyboard input * not yet functional, honestly just copied off of an example calculator from another student 
 window.addEventListener("keydown", (event) => {
     let key = event.key
-    let buttonList = Array.from(document.querySelectorAll('button'));
-    let buttonClicked = filterButtons();
-    console.log(buttonClicked);
-    function filterButtons() {
-        buttonList.filter((button) => {
-            button.textContent = key;
-        });
-    };
-
+    let clickButton = document.getElementById(key);
+    console.log(clickButton);
+    clickButton.click();
 });
 
 
