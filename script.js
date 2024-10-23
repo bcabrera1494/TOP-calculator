@@ -59,7 +59,7 @@ const input = {
 let buttons = document.querySelectorAll('button');
 const display = document.querySelector('.display');
 
-// Event listener to add keyboard input * not yet functional, honestly just copied off of an example calculator from another student 
+// Event listener to add keyboard input 
 window.addEventListener("keydown", (event) => {
     let key = event.key
     let clickButton = document.getElementById(key);
