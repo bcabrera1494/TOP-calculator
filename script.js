@@ -60,30 +60,32 @@ let buttons = document.querySelectorAll('button');
 const display = document.querySelector('.display');
 
 // Event listener to add keyboard input 
-window.addEventListener("keydown", (event) => {
+window.addEventListener("keypress", (event) => {
     let key = event.key
+    console.log(key);
     let clickButton = document.getElementById(key);
-    if (key == 'enter') {
-        clickButton = document.getElementById('=');
-        clickButton.dispatchEvent(clickEvent);
+    if (key == 'Enter' || key == '=') {
+        let clickEvent = new Event(('click'), {
+            bubbles: true,
+            cancelable: true,
+            view: window
+        });
+        equals = document.getElementById('equals');
+        equals.dispatchEvent(clickEvent);
+    } else {
+        let clickEventDown = new Event(('mousedown'), {
+            bubbles: true,
+            cancelable: true,
+            view: window
+        });
+        let clickEventUp = new Event(('mouseup'), {
+            bubbles: true,
+            cancelable: true,
+            view: window
+        });
+        clickButton.dispatchEvent(clickEventDown);
+        clickButton.dispatchEvent(clickEventUp);
     };
-    let clickEventDown = new Event(('mousedown'), {
-        bubbles: true,
-        cancelable: true,
-        view: window
-    });
-    let clickEventUp = new Event(('mouseup'), {
-        bubbles: true,
-        cancelable: true,
-        view: window
-    });
-    let clickEvent = new Event(('click'), {
-        bubbles: true, 
-        cancelable: true,
-        view: window
-    });
-    clickButton.dispatchEvent(clickEventDown);
-    clickButton.dispatchEvent(clickEventUp);
 
 });
 
